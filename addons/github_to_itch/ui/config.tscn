@@ -49,6 +49,7 @@ vertical_alignment = 2
 [node name="Username" type="LineEdit" parent="Config/Control/ItchInfo/MarginContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Vadul Blamers "
 placeholder_text = "username"
 expand_to_text_length = true
 
@@ -68,6 +69,7 @@ vertical_alignment = 2
 [node name="ProjectName" type="LineEdit" parent="Config/Control/ItchInfo/MarginContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "neuro-jam-2024"
 placeholder_text = "project-name"
 expand_to_text_length = true
 
@@ -81,6 +83,7 @@ text = "Found in itch url"
 
 [node name="PanelContainer" type="PanelContainer" parent="Config/Control"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Config/Control/PanelContainer"]
 layout_mode = 2
@@ -106,7 +109,6 @@ text = "[b]If you haven't setup your project in Itch, [color=#8af][url=https://i
  On the lefthand side find Secrets > Actions and add the API key as a secret with the name [code][bgcolor=#444] BUTLER_API_KEY [/bgcolor][/code][/ol]
 
 [center][img=center,center]res://addons/github_to_itch/assets/secrets.png[/img][/center]"
-fit_content_height = true
 scroll_active = false
 selection_enabled = true
 deselect_on_focus_loss_enabled = false

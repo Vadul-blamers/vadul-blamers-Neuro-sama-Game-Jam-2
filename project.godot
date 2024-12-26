@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="vadul-blamers-neuro-jam-2"
+run/main_scene="res://scene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -18,6 +19,15 @@ config/icon="res://icon.svg"
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/github_to_itch/plugin.cfg")
+
+[github_to_itch]
+
+config/itch_username="Vadul Blamers "
+config/itch_project_name="neuro-jam-2024"
 
 [rendering]
 
