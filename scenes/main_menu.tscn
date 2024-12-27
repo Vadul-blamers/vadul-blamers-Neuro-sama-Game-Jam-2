@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk6quuxq5veel"]
+
+[ext_resource type="Texture2D" uid="uid://c35y0q16lpj8p" path="res://assets/art/bg.png" id="1_68t4u"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_idp5h"]
+[ext_resource type="Texture2D" uid="uid://drep2wyycdnn2" path="res://assets/art/title.png" id="2_71esc"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_idp5h")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 729.0
+texture = ExtResource("1_68t4u")
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 10.0
+offset_right = 840.0
+offset_bottom = 210.0
+texture = ExtResource("2_71esc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 266.0
+offset_right = 840.0
+offset_bottom = 466.0
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_constants/h_separation = 0
+text = "PLAY"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_constants/h_separation = 0
+text = "SETTINGS"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_constants/h_separation = 0
+text = "CREDITS"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_constants/h_separation = 0
+text = "EXIT"
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
