@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://danj173ee2hki"]
+
+[ext_resource type="Script" path="res://game/play.gd" id="1_t7qxl"]
+[ext_resource type="Texture2D" uid="uid://c35y0q16lpj8p" path="res://assets/art/bg.png" id="2_rfrko"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Play" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t7qxl")
+
+[node name="BG" type="TextureRect" parent="Play"]
+visible = false
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 729.0
+texture = ExtResource("2_rfrko")
+
+[node name="Label" type="Label" parent="Play"]
+visible = false
+layout_mode = 0
+offset_left = 499.0
+offset_top = 270.0
+offset_right = 539.0
+offset_bottom = 293.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Game goes here lol"
+
+[node name="BackButton" type="Button" parent="Play"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 15.0
+offset_right = 68.0
+offset_bottom = 46.0
+text = "BACK"
+
+[connection signal="pressed" from="Play/BackButton" to="Play" method="_on_back_button_pressed"]
