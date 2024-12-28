@@ -3,23 +3,23 @@ extends Control
 @export
 var save_file_path = "user://config.save"
 
-@export
-var turn_time = 30.0
-@export
-var turn_warning_time = 5.0
-
 func _ready():
-	$Label2.visible = !OS.is_userfs_persistent()
+	var persistent = OS.is_userfs_persistent()
+	$Label2.visible = !persistent
+	if persistent:
+		load_save()
 	pass
 
 func _on_back_button_pressed() -> void:
-	save()
+	var persistent = OS.is_userfs_persistent()
+	if persistent:
+		save()
 	get_tree().change_scene_to_file("res://menu/main_menu.tscn")
 
 func get_save():
 	var data = {
-		"turn_time": turn_time,
-		"turn_warming_time" : turn_warning_time
+		"turn_time": Config.turn_time,
+		"turn_warning_time" : Config.turn_warning_time
 	}
 	return data
 	
@@ -32,4 +32,9 @@ func save():
 
 func load_save():
 	var save_file = FileAccess.open(save_file_path, FileAccess.READ)
+	var text = save_file.get_as_text()
+	var data = JSON.parse_string(text)
+	Config.turn_time = data["turn_time"]
+	Config.turn_warning_time = data["turn_warning_time"]
+	
 	pass
