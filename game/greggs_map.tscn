@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7o3qdh2ta6xd"]
+
+[ext_resource type="PackedScene" uid="uid://bsi7r2mgjo75y" path="res://game/greggs_room.tscn" id="1_hkg5b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_otdef"]
+resource_local_to_scene = true
+size = Vector2(400, 40)
+
+[node name="GreggsMap" type="Node2D"]
+
+[node name="GreggsRoom" parent="." instance=ExtResource("1_hkg5b")]
+
+[node name="CollisionShape2D" parent="GreggsRoom/NorthWall/BlockCollision" index="0"]
+shape = SubResource("RectangleShape2D_otdef")
+
+[node name="CollisionShape2D" parent="GreggsRoom/SouthWall/BlockCollision" index="0"]
+shape = SubResource("RectangleShape2D_otdef")
+
+[node name="GreggsRoom2" parent="." instance=ExtResource("1_hkg5b")]
+position = Vector2(0, -720)
+
+[node name="GreggsRoom3" parent="." instance=ExtResource("1_hkg5b")]
+position = Vector2(-1280, -720)
+
+[node name="GreggsRoom4" parent="." instance=ExtResource("1_hkg5b")]
+position = Vector2(1280, -720)
+
+[editable path="GreggsRoom"]
