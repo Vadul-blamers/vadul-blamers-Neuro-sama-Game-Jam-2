@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4hxuj6yrvaiy"]
+
+[ext_resource type="Script" path="res://game/ui/ability_card/ability_card.gd" id="1_hu42n"]
+[ext_resource type="PackedScene" uid="uid://buibq43pk31lt" path="res://ability/blank.tscn" id="2_l01au"]
+
+[node name="AbilityCard" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -588.0
+script = ExtResource("1_hu42n")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Icon" parent="Control" instance=ExtResource("2_l01au")]
+layout_mode = 0
+
+[node name="Label" type="RichTextLabel" parent="."]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Floating text[/center]"
+fit_content = true
