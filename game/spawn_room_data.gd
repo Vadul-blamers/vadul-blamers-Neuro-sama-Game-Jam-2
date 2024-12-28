@@ -1,5 +1,5 @@
-extends RoomData
 class_name SpawnRoomData
+extends RoomData
 
 func on_enter_room() -> void:
 	print("spawn room")

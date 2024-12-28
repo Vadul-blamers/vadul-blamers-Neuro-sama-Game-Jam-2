@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b4jprwcfx7c8e"]
+[gd_scene load_steps=21 format=3 uid="uid://b4jprwcfx7c8e"]
 
 [ext_resource type="Script" path="res://game/player/Player.gd" id="1_34ufq"]
 [ext_resource type="Texture2D" uid="uid://c2gpl3xq3l5ty" path="res://assets/sprites/TEMP WALK SOUTH VEDAL.png" id="2_i4bo7"]
@@ -119,9 +119,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_vrbij"]
 radius = 20.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_upoye"]
-radius = 390.0
-
 [node name="CharacterBody2D" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_34ufq")
@@ -137,9 +134,6 @@ frame_progress = 0.689555
 shape = SubResource("CircleShape2D_vrbij")
 debug_color = Color(0.870796, 0.266297, 0.579592, 0.42)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-
 [node name="Node" type="Node" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="Node"]
@@ -147,10 +141,3 @@ script = ExtResource("3_sgtsl")
 
 [node name="Crosshair" type="Sprite2D" parent="Node/Marker2D"]
 texture = ExtResource("3_47pir")
-
-[node name="EnemyLoadArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyLoadArea"]
-scale = Vector2(0.994207, 0.978922)
-shape = SubResource("CircleShape2D_upoye")
-debug_color = Color(0, 0.545098, 0.937255, 0.0901961)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://danj173ee2hki"]
+[gd_scene load_steps=3 format=3 uid="uid://cyrq262chr3fb"]
 
 [ext_resource type="PackedScene" uid="uid://c22yxfeqye05h" path="res://game/ui/ai-control.tscn" id="3_5iygr"]
 [ext_resource type="PackedScene" uid="uid://48p045d6g5uj" path="res://game/greggs_map.tscn" id="4_jvt5x"]
@@ -6,6 +6,7 @@
 [node name="Node2D" type="Node"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
 
 [node name="AiControl" parent="CanvasLayer" instance=ExtResource("3_5iygr")]
 top_level = true

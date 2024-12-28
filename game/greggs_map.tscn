@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=4 uid="uid://c7o3qdh2ta6xd"]
+[gd_scene load_steps=4 format=4 uid="uid://48p045d6g5uj"]
 
-[ext_resource type="PackedScene" uid="uid://bsi7r2mgjo75y" path="res://game/greggs_room.tscn" id="1_hkg5b"]
+[ext_resource type="PackedScene" uid="uid://cn6vadl6wuomc" path="res://game/greggs_room.tscn" id="1_hkg5b"]
 [ext_resource type="Script" path="res://game/map.gd" id="1_u5shs"]
 [ext_resource type="PackedScene" uid="uid://b4jprwcfx7c8e" path="res://game/player/Player.tscn" id="3_uy5mu"]
 
