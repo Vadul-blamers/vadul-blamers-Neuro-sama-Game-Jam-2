@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game/Events.gd" id="1_wjxjj"]
 [ext_resource type="Script" path="res://game/Event.gd" id="2_qajpt"]
-[ext_resource type="Script" path="res://default_ai.gd" id="3_l42lu"]
+[ext_resource type="Script" path="res://game/default_ai.gd" id="3_l42lu"]
 
 [node name="Scene" type="Node2D"]
 
