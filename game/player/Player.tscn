@@ -120,7 +120,7 @@ animations = [{
 radius = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_upoye"]
-radius = 281.144
+radius = 390.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 motion_mode = 1
@@ -138,7 +138,7 @@ shape = SubResource("CircleShape2D_vrbij")
 debug_color = Color(0.870796, 0.266297, 0.579592, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 
 [node name="Node" type="Node" parent="."]
 
