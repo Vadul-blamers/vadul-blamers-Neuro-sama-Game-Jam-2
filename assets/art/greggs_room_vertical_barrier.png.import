@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4qgicca5ug7p"
-path="res://.godot/imported/image10.png-15d2e56bc7aa3571ecaa5326a30439a4.ctex"
+uid="uid://ud6cny32ugyv"
+path="res://.godot/imported/greggs_room_vertical_barrier.png-4a48048863f0a25068c40d24996d99ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/image10.png"
-dest_files=["res://.godot/imported/image10.png-15d2e56bc7aa3571ecaa5326a30439a4.ctex"]
+source_file="res://assets/art/greggs_room_vertical_barrier.png"
+dest_files=["res://.godot/imported/greggs_room_vertical_barrier.png-4a48048863f0a25068c40d24996d99ee.ctex"]
 
 [params]
 

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://civlssogrw6f4"]
+
+[ext_resource type="Script" path="res://game/ai/random/random_ai.gd" id="1_norao"]
+
+[node name="RandomAi" type="Node"]
+script = ExtResource("1_norao")

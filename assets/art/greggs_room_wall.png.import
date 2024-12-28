@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ikh64ylm7chy"
-path="res://.godot/imported/image3.png-15402a5481d1df68dd418a5358c81ea8.ctex"
+uid="uid://ccp75xkirfmla"
+path="res://.godot/imported/greggs_room_wall.png-f93a59907f9e599cd44cddd64b3fdf08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/image3.png"
-dest_files=["res://.godot/imported/image3.png-15402a5481d1df68dd418a5358c81ea8.ctex"]
+source_file="res://assets/art/greggs_room_wall.png"
+dest_files=["res://.godot/imported/greggs_room_wall.png-f93a59907f9e599cd44cddd64b3fdf08.ctex"]
 
 [params]
 

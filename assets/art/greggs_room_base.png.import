@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2f31rnglber"
-path="res://.godot/imported/image9.png-68d375ef5dd13f0074097af4a52bc19e.ctex"
+uid="uid://d2ljkmst35jn0"
+path="res://.godot/imported/greggs_room_base.png-b1f96ae0be964a3622bc240b496aedaf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/image9.png"
-dest_files=["res://.godot/imported/image9.png-68d375ef5dd13f0074097af4a52bc19e.ctex"]
+source_file="res://assets/art/greggs_room_base.png"
+dest_files=["res://.godot/imported/greggs_room_base.png-b1f96ae0be964a3622bc240b496aedaf.ctex"]
 
 [params]
 
