@@ -3,7 +3,7 @@ extends Node
 @export var positiveValue = 2.0;
 var events : Events;
 
-func choose_event(choices : Array[int]):
+func chooseEvent(choices : Array[int]):
 	var weights : Array[float] = [];
 	weights.resize(choices.size());
 	var history = events.getDamageHistory();
@@ -22,8 +22,18 @@ func choose_event(choices : Array[int]):
 			weights[i] = history[choice];
 			weights[i] *= events.getEvent(choice).specialWeightFactor();
 		# Maybe do some squaring or adding minimums or something here
-	# Do weighted randomness to choose an action
-	return choices[0]; #placeholder
+	return choices[weightedRandom(weights)];
+	
+func weightedRandom(weights : Array[float]):
+	var accumulated = weights.duplicate();
+	var total = 0.0;
+	for i in weights.size():
+		total += weights[i];
+		accumulated[i] = total;
+	var rng = randf_range(0.0, total);
+	for i in weights.size():
+		if rng >= accumulated[i]:
+			return i;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
