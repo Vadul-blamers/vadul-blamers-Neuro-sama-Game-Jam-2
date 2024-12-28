@@ -31,7 +31,7 @@ var _timer_bar = $MainContainer/VBoxContainer/TimerContainer/TimerBar
 var _ability_grid = $MainContainer/VBoxContainer/Panel/AbilityGrid
 
 var ability_cards:Array[AbilityCard] = []
-var selected_ability:AbilityCard = null
+var selected_ability:AbilityContainer = null
 
 signal turn_about_to_end
 signal turn_end

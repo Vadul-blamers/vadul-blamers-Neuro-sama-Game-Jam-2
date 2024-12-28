@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c22yxfeqye05h"]
+[gd_scene load_steps=8 format=3 uid="uid://c22yxfeqye05h"]
 
 [ext_resource type="Theme" uid="uid://cd2iy5r0u86vj" path="res://assets/ui/theme.tres" id="1_8wco2"]
 [ext_resource type="Script" path="res://game/ui/ai_control.gd" id="1_iu083"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://ability/Ability.gd" id="3_inn7q"]
 [ext_resource type="Resource" uid="uid://celpodlo5ymgt" path="res://ability/BlankAbility.tres" id="4_4iaoj"]
 [ext_resource type="Texture2D" uid="uid://w6tvqnoxb5re" path="res://assets/ui/Colored/grey.png" id="4_d74ch"]
+[ext_resource type="PackedScene" uid="uid://civlssogrw6f4" path="res://game/ai/random/RandomAI.tscn" id="5_vnlnv"]
 
 [node name="AiControl" type="Control" node_paths=PackedStringArray("turn_timer", "turn_about_to_end_timer", "card_selection_finished_timer")]
 layout_mode = 3
@@ -19,10 +20,12 @@ script = ExtResource("1_iu083")
 turn_timer = NodePath("TurnWaitTimer")
 turn_about_to_end_timer = NodePath("TurnAboutToEndTimer")
 card_selection_finished_timer = NodePath("CardSelectionAnimationFinished")
-turn_time = 20
+turn_time = 15
 timer_color = Color(0, 0.866667, 0, 1)
 timer_warning_color = Color(0.956863, 0, 0, 1)
 available_abilities = Array[ExtResource("3_inn7q")]([ExtResource("4_4iaoj")])
+
+[node name="RandomAi" parent="." instance=ExtResource("5_vnlnv")]
 
 [node name="MainContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -131,13 +134,11 @@ one_shot = true
 [node name="CardSelectionAnimationFinished" type="Timer" parent="."]
 one_shot = true
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_right = 116.0
-offset_bottom = 72.0
-text = "test"
-
+[connection signal="options_generated" from="." to="RandomAi" method="_on_selections_available"]
+[connection signal="turn_about_to_end" from="." to="RandomAi" method="_on_turn_about_to_end"]
+[connection signal="turn_end" from="." to="RandomAi" method="_on_turn_end"]
+[connection signal="turn_start" from="." to="RandomAi" method="_on_turn_start"]
+[connection signal="made_selection" from="RandomAi" to="." method="ability_selected"]
 [connection signal="timeout" from="TurnWaitTimer" to="." method="_on_turn_wait_timer_timeout"]
 [connection signal="timeout" from="TurnAboutToEndTimer" to="." method="_on_turn_about_to_end_timer_timeout"]
 [connection signal="timeout" from="CardSelectionAnimationFinished" to="." method="_on_card_selection_animation_finished_timeout"]
-[connection signal="pressed" from="Button" to="." method="ability_selected" binds= [2]]
