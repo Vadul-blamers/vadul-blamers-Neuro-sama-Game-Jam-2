@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://ability/Ability.gd" id="3_inn7q"]
 [ext_resource type="Resource" uid="uid://celpodlo5ymgt" path="res://ability/BlankAbility.tres" id="4_4iaoj"]
 [ext_resource type="Texture2D" uid="uid://w6tvqnoxb5re" path="res://assets/ui/Colored/grey.png" id="4_d74ch"]
+[ext_resource type="Script" path="res://neuro/neuro_integration.gd" id="7_howro"]
 [ext_resource type="PackedScene" uid="uid://civlssogrw6f4" path="res://game/ai/random/RandomAI.tscn" id="5_vnlnv"]
 
 [node name="AiControl" type="Control" node_paths=PackedStringArray("turn_timer", "turn_about_to_end_timer", "card_selection_finished_timer")]
@@ -136,6 +137,10 @@ one_shot = true
 [node name="CardSelectionAnimationFinished" type="Timer" parent="."]
 one_shot = true
 
+[node name="NeuroIntegration" type="Node" parent="."]
+script = ExtResource("7_howro")
+
+[connection signal="options_generated" from="." to="NeuroIntegration" method="_on_ai_control_options_generated"]
 [connection signal="options_generated" from="." to="RandomAi" method="_on_selections_available"]
 [connection signal="turn_about_to_end" from="." to="RandomAi" method="_on_turn_about_to_end"]
 [connection signal="turn_end" from="." to="RandomAi" method="_on_turn_end"]
