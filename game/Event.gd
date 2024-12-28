@@ -14,3 +14,6 @@ func _process(delta: float) -> void:
 # Should be 0 for antisynergy or large for synergy, or calculated if it's based on outside factors.
 func specialWeightFactor():
 	return 1;
+
+func isPositive():
+	return false;

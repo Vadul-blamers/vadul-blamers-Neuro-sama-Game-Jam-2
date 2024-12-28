@@ -1,14 +1,26 @@
 extends Node
 
+@export var positiveValue = 2.0;
 var events : Events;
 
 func choose_event(choices : Array[int]):
-	var weights = choices.duplicate();
+	var weights : Array[float] = [];
+	weights.resize(choices.size());
 	var history = events.getDamageHistory();
+	var positive = 0.0;
+	for c in choices:
+		var e = events.getEvent(c)
+		if (e.isPositive()):
+			positive += 1.0;
 	for i in choices.size():
+
 		var choice = choices[i];
-		weights[i] = history[choice];
-		weights[i] *= events.getEvent(choice).specialWeightFactor();
+		var e = events.getEvent(choice)
+		if (e.isPositive()):
+			weights[i] = positiveValue * sqrt(positive);
+		else:
+			weights[i] = history[choice];
+			weights[i] *= events.getEvent(choice).specialWeightFactor();
 		# Maybe do some squaring or adding minimums or something here
 	# Do weighted randomness to choose an action
 	return choices[0]; #placeholder

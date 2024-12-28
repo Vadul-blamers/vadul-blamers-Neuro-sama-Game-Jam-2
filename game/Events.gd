@@ -6,9 +6,9 @@ var eventList : Node;
 
 #DamageHistory is a sort of average of damage taken by the player when a certain option was selected.
 # It should persist between games
-@export var historyDecay : int = 3;
-@export var startHistory : int = 10;
-var damageHistory : Array[int] = [];
+@export var historyDecay : float = 1.33;
+@export var startHistory : float = 10.0;
+var damageHistory : Array[float] = [];
 
 var activeEvent : Event;
 
