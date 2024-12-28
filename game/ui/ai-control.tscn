@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c22yxfeqye05h"]
+[gd_scene load_steps=8 format=3 uid="uid://c22yxfeqye05h"]
 
 [ext_resource type="Theme" uid="uid://cd2iy5r0u86vj" path="res://assets/ui/theme.tres" id="1_8wco2"]
 [ext_resource type="Script" path="res://game/ui/ai_control.gd" id="1_iu083"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://ability/Ability.gd" id="3_inn7q"]
 [ext_resource type="Resource" uid="uid://celpodlo5ymgt" path="res://ability/BlankAbility.tres" id="4_4iaoj"]
 [ext_resource type="Texture2D" uid="uid://w6tvqnoxb5re" path="res://assets/ui/Colored/grey.png" id="4_d74ch"]
+[ext_resource type="Script" path="res://neuro/neuro_integration.gd" id="7_howro"]
 
 [node name="AiControl" type="Control" node_paths=PackedStringArray("turn_timer", "turn_about_to_end_timer", "card_selection_finished_timer")]
 layout_mode = 3
@@ -137,6 +138,10 @@ offset_right = 116.0
 offset_bottom = 72.0
 text = "test"
 
+[node name="NeuroIntegration" type="Node" parent="."]
+script = ExtResource("7_howro")
+
+[connection signal="options_generated" from="." to="NeuroIntegration" method="_on_ai_control_options_generated"]
 [connection signal="timeout" from="TurnWaitTimer" to="." method="_on_turn_wait_timer_timeout"]
 [connection signal="timeout" from="TurnAboutToEndTimer" to="." method="_on_turn_about_to_end_timer_timeout"]
 [connection signal="timeout" from="CardSelectionAnimationFinished" to="." method="_on_card_selection_animation_finished_timeout"]
