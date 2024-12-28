@@ -6,7 +6,8 @@ class_name Room
 #the types of rooms that a room can be set to
 enum RoomTypes{
 	SPAWN,
-	ENEMY
+	ENEMY,
+	END
 }
 #the room type that a room will be, set in the editor so that the same room base can be set to different rooms
 @export var room_type: RoomTypes
@@ -29,18 +30,18 @@ func _ready() -> void:
 			_entered_room()
 		RoomTypes.ENEMY:
 			room_data = EnemyRoomData.new()
+		RoomTypes.END:
+			room_data = EndRoomData.new()
 	
-#check to see if the player did in fact enter the room
+#trigger logic for when the room is entered
 func _entered_room() -> void:
-	
-	#pseudocode -- if player collides with room transition and map.current_room is not this room: 
 	$Camera2D.make_current() #move camera to new room
+	map.move_ui() #move the ui--note that this is a mostly a placeholder
 	map.current_room = self
 	room_data.on_enter_room() #activate room switching logic
 
 #if the room was entered and the room is not the room the player is currently in, trigger the room entry effects
 #might want to separate this for the camera vs room entry effects 
-#also, this will probably cause some issues if the body that enters is Not the player? but uhh we'll figure that out later.
 func _on_room_interior_body_entered(body: Node2D) -> void:
-	if not map.current_room == self:
+	if body is CharacterBody2D and not map.current_room == self:
 		_entered_room()
