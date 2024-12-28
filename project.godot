@@ -23,7 +23,8 @@ neuro_sdk="*res://addons/neuro-sdk/neuro_sdk.tscn"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/stretch/mode="canvas_items"
+window/size/resizable=false
+window/stretch/mode="viewport"
 
 [dotnet]
 
