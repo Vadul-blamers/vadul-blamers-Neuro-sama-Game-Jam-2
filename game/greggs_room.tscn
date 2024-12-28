@@ -15,4 +15,4 @@ tile_set = ExtResource("2_5gmmy")
 position = Vector2(644, 364)
 shape = SubResource("RectangleShape2D_yq1rn")
 
-[connection signal="area_entered" from="RoomInterior" to="." method="_on_room_interior_area_entered"]
+[connection signal="body_entered" from="RoomInterior" to="." method="_on_room_interior_body_entered"]

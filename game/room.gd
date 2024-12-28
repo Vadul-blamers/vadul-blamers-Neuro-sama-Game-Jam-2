@@ -17,15 +17,6 @@ var room_data: RoomData
 #the map the room belongs to
 var map: Map
 
-#variables for if the room has rooms to each direction of it
-#@export var room_to_north:= false
-#@export var room_to_east:= false
-#@export var room_to_south:= false
-#@export var room_to_west:= false
-
-#do transitions based on hitting a certain point in a room you are NOT currently in?
-#avoids the issue of switching rooms too early
-
 #set up the room 
 func _ready() -> void:
 	#set the map variable to the current map
@@ -44,10 +35,12 @@ func _entered_room() -> void:
 	
 	#pseudocode -- if player collides with room transition and map.current_room is not this room: 
 	$Camera2D.make_current() #move camera to new room
+	map.current_room = self
 	room_data.on_enter_room() #activate room switching logic
 
 #if the room was entered and the room is not the room the player is currently in, trigger the room entry effects
 #might want to separate this for the camera vs room entry effects 
-func _on_room_interior_area_entered(area: Area2D) -> void:
+#also, this will probably cause some issues if the body that enters is Not the player? but uhh we'll figure that out later.
+func _on_room_interior_body_entered(body: Node2D) -> void:
 	if not map.current_room == self:
 		_entered_room()
