@@ -1,6 +1,4 @@
-# this scene uses several timer nodes so the signals can be hooked up from 
-# the UI without needing any conditional logic to figure what is being measured
-
+#controls and displays the actions of the AI agent.
 extends Control
 
 @export 
@@ -10,12 +8,14 @@ var turn_about_to_end_timer:Timer
 @export 
 var card_selection_finished_timer:Timer
 
-@export 
-var turn_time = 30
 @export
-var turn_warning_time = 5
+var turn_time = 30.0
+@export
+var turn_warning_time = 5.0
+
 @export
 var timer_color:Color
+
 @export
 var timer_warning_color:Color
 
@@ -54,12 +54,14 @@ func _ready():
 	pass
 
 func _process(delta):
+	var value = 0.0
 	if not turn_timer.is_stopped():
-		_timer_bar.set_value_no_signal(turn_timer.time_left+turn_warning_time)
+		value = turn_timer.time_left+turn_warning_time
 		pass
 	else:
-		_timer_bar.set_value_no_signal(turn_about_to_end_timer.time_left)
+		value = turn_about_to_end_timer.time_left
 		pass
+	_timer_bar.set_value_no_signal(value)
 	pass
 
 func _on_turn_wait_timer_timeout():
@@ -88,7 +90,12 @@ func _on_card_selection_animation_finished_timeout():
 		return true
 		pass)
 	pass # Replace with function body.
-	
+
+
+#How positive events should work:
+# - Initially there are zero to select
+# - When a negative event is selected it increases the amount of positive events next time
+# - Weight of positive events is low but multiplied by sqrt(positive events)
 #pick 
 func _generate_ability_roster():
 	var options: Array[AbilityContainer]
@@ -112,4 +119,18 @@ func ability_selected(index:int):
 		item.discarded()
 		return true
 		pass)
+	pass
+
+# The index is needed to figure how to handle the whole process.
+func ability_selected_by_data(ability:AbilityContainer):
+	var cards = ability_cards.filter(func(item:AbilityCard):
+		return item.ability.name == ability.name
+		pass)
+	# if the input was not valid, pick 0
+	if cards.is_empty():
+		ability_selected(0)
+		return
+	var card =  cards[0]
+	var index = ability_cards.find(card)
+	ability_selected(index)
 	pass
