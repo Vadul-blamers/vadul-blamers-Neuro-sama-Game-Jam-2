@@ -1,15 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn6vadl6wuomc"]
+[gd_scene load_steps=4 format=3 uid="uid://bsi7r2mgjo75y"]
 
-[ext_resource type="PackedScene" path="res://game/room.tscn" id="1_nwk6y"]
+[ext_resource type="PackedScene" uid="uid://p4r4pxkhrktl" path="res://game/room.tscn" id="1_nwk6y"]
+[ext_resource type="TileSet" uid="uid://d0tryqx4fvky4" path="res://game/map/tileset.tres" id="2_5gmmy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6n8o0"]
-resource_local_to_scene = true
-size = Vector2(400, 40)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yq1rn"]
+size = Vector2(1232, 672)
 
 [node name="GreggsRoom" instance=ExtResource("1_nwk6y")]
 
-[node name="CollisionShape2D" parent="NorthWall/BlockCollision" index="0"]
-shape = SubResource("RectangleShape2D_6n8o0")
+[node name="Layout" parent="." index="1"]
+tile_set = ExtResource("2_5gmmy")
 
-[node name="CollisionShape2D" parent="SouthWall/BlockCollision" index="0"]
-shape = SubResource("RectangleShape2D_6n8o0")
+[node name="CollisionShape2D" parent="RoomInterior" index="0"]
+position = Vector2(644, 364)
+shape = SubResource("RectangleShape2D_yq1rn")
+
+[connection signal="body_entered" from="RoomInterior" to="." method="_on_room_interior_body_entered"]
