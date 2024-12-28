@@ -4,7 +4,7 @@ var mouse_location
 var character_location
 var facing = "down"
 var mouse_relative_position
-func _physics_process(delta):
+func _physics_process(_delta):
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = direction * 300
 	if cam_lock:
@@ -15,7 +15,10 @@ func _physics_process(delta):
 		mouse_relative_position = mouse_location - character_location
 		print(mouse_relative_position)
 		_direction_facing(mouse_relative_position)
-	_walking_animations()
+	if velocity == Vector2(0,0) :
+		_idle_animations()
+	else:
+		_walking_animations()
 	move_and_slide()
 
 func _direction_facing(orientation):
@@ -45,11 +48,11 @@ func _walking_animations():
 
 func _idle_animations():
 	match $AnimatedSprite2D.animation:
-		"Walking south":
+		"Walking down":
 			$AnimatedSprite2D.play("Idle down")
-		"Walking north":
+		"Walking up":
 			pass
-		"Walking east":
+		"Walking right":
 			pass
-		"Walking west":
+		"Walking left":
 			pass
