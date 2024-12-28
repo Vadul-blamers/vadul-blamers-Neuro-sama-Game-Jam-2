@@ -1,23 +1,26 @@
 extends NeuroAction
+class_name SpellAction
 
-const Play := preload("res://game/play.gd")
+var _integration: NeuroIntegration
+var _description: String
+var _spell_enum: Array[String]
 
-var _play: Play
-
-func _init(window: ActionWindow, play: Play):
+func _init(window: ActionWindow, integration: NeuroIntegration, description: String, spell_enum: Array[String]):
 	super(window)
-	_play = play
+	_integration = integration
+	_description = description
+	_spell_enum = spell_enum
 
 func _get_name() -> String:
 	return "spell"
 
 func _get_description() -> String:
-	return "You can choose between those spells. Pick one."
+	return _description
 
 func _get_schema() -> Dictionary:
 	return JsonUtils.wrap_schema({
 		"spell": {
-			"enum": _get_spells()
+			"enum": _spell_enum
 		}
 	})
 
@@ -26,7 +29,7 @@ func _validate_action(data: IncomingData, state: Dictionary) -> ExecutionResult:
 	if not spell:
 		return ExecutionResult.failure(Strings.action_failed_missing_required_parameter.format(["spell"]))
 
-	var spells := _get_spells()
+	var spells := _spell_enum
 	if not spells.has(spell):
 		return ExecutionResult.failure(Strings.action_failed_invalid_parameter.format(["spell"]))
 
@@ -34,10 +37,4 @@ func _validate_action(data: IncomingData, state: Dictionary) -> ExecutionResult:
 	return ExecutionResult.success()
 
 func _execute_action(state: Dictionary) -> void:
-	_play.cast_spell(state["spell"])
-
-func _get_spells() -> Array[String]:
-	# not sure yet how to pass available spells from the game itself
-	# but they have to be randomized inside the game to first show in UI
-	# and then passed here
-	return ["attack"]
+	_integration.cast_spell(state["spell"])

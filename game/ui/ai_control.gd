@@ -9,9 +9,9 @@ var turn_about_to_end_timer:Timer
 var card_selection_finished_timer:Timer
 
 @export
-var turn_time = 30.0
+var turn_time = Config.turn_time
 @export
-var turn_warning_time = 5.0
+var turn_warning_time = Config.turn_warning_time
 
 @export
 var timer_color:Color
