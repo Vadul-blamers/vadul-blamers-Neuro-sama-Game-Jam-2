@@ -21,7 +21,7 @@ var map: Map
 #set up the room 
 func _ready() -> void:
 	#set the map variable to the current map
-	map = get_parent().get_parent()
+	map = get_parent()
 	
 	#depending on the room type set to each room, initialize the room data
 	match room_type:

@@ -12,3 +12,4 @@ layer = 10
 top_level = true
 
 [node name="GreggsMap" parent="." instance=ExtResource("4_jvt5x")]
+position = Vector2(31, 4)

@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=4 uid="uid://c7o3qdh2ta6xd"]
+[gd_scene load_steps=8 format=4 uid="uid://48p045d6g5uj"]
 
-[ext_resource type="PackedScene" uid="uid://cn6vadl6wuomc" path="res://game/greggs_room.tscn" id="1_hkg5b"]
+[ext_resource type="PackedScene" uid="uid://bsi7r2mgjo75y" path="res://game/greggs_room.tscn" id="1_hkg5b"]
 [ext_resource type="Script" path="res://game/map.gd" id="1_u5shs"]
 [ext_resource type="PackedScene" uid="uid://b4jprwcfx7c8e" path="res://game/player/Player.tscn" id="3_uy5mu"]
 [ext_resource type="Texture2D" uid="uid://c35y0q16lpj8p" path="res://assets/art/bg.png" id="4_isfhg"]
+[ext_resource type="PackedScene" uid="uid://bes3h8osl2j2a" path="res://game/enemy/Enemy.tscn" id="4_ktrnm"]
 [ext_resource type="TileSet" uid="uid://d0tryqx4fvky4" path="res://game/map/tileset.tres" id="5_lhflf"]
+[ext_resource type="PackedScene" uid="uid://c22yxfeqye05h" path="res://game/ui/ai-control.tscn" id="6_h6qns"]
 
 [node name="GreggsMap" type="Node2D"]
 script = ExtResource("1_u5shs")
@@ -47,6 +49,14 @@ tile_set = ExtResource("5_lhflf")
 position = Vector2(644, 328)
 
 [node name="Placeholder" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(645, 98)
 scale = Vector2(128.9, 19.5)
 texture = ExtResource("4_isfhg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AiControl" parent="CanvasLayer" instance=ExtResource("6_h6qns")]
+
+[node name="Enemy" parent="." instance=ExtResource("4_ktrnm")]
+position = Vector2(235, 316)
