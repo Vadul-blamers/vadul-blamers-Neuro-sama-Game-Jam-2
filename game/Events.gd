@@ -1,11 +1,16 @@
 extends Node
+class_name Events;
+
 var count : int;
 var eventList : Node;
 
 #DamageHistory is a sort of average of damage taken by the player when a certain option was selected.
-@export var historyDecay : int = 4;
+# It should persist between games
+@export var historyDecay : int = 3;
 @export var startHistory : int = 10;
 var damageHistory : Array[int] = [];
+
+var activeEvent : Event;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,3 +26,16 @@ func _process(delta: float) -> void:
 
 func getEvent(x : int):
 	return eventList.getChild(x).getScript as Event;
+
+func getActiveEvent():
+	return activeEvent;
+	
+func getDamageHistory():
+	return damageHistory;
+	
+## Event cycle
+# Select possible events
+# Get chosen event
+# Wait for timer to expire
+# Add damage taken during the previous event to damageHistory then divide by decay
+# Start next event

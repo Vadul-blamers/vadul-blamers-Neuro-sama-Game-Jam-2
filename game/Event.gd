@@ -9,3 +9,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+# Make this return someting special if an event has something else impact its weight for the AI to pick.
+# Should be 0 for antisynergy or large for synergy, or calculated if it's based on outside factors.
+func specialWeightFactor():
+	return 1;
