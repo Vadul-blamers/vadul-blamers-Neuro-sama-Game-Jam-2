@@ -1,6 +1,16 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://d0tryqx4fvky4"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://d0tryqx4fvky4"]
 
 [ext_resource type="Texture2D" uid="uid://dvuorpjd5l7g1" path="res://assets/art/greggs_tiles_1.png" id="1_0up33"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jqv2d"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_aelva"]
+vertices = PackedVector2Array(14, 14, -14, 14, -14, -14, 14, -14)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-14, -14, 14, -14, 14, 14, -14, 14)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_2pkdm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sed1n"]
 texture = ExtResource("1_0up33")
@@ -15,13 +25,16 @@ texture_region_size = Vector2i(28, 28)
 2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14, -14, 14, -14, 14, 14, -14, 14)
 2:4/next_alternative_id = 3
 2:4/0 = 0
+2:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_2pkdm")
 1:4/0 = 0
+1:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_aelva")
 1:3/0 = 0
 1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14, -14, 14, -14, 14, 14, -14, 14)
 1:2/0 = 0
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14, -14, 14, -14, 14, 14, -14, 14)
 0:4/next_alternative_id = 4
 0:4/0 = 0
+0:4/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jqv2d")
 0:3/0 = 0
 0:2/0 = 0
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14, -14, 14, -14, 14, 14, -14, 14)
@@ -37,4 +50,5 @@ texture_region_size = Vector2i(28, 28)
 [resource]
 tile_size = Vector2i(28, 28)
 physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
 sources/1 = SubResource("TileSetAtlasSource_sed1n")
