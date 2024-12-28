@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://f8vpns11s5y4"]
+
+[ext_resource type="Script" path="res://game/Events.gd" id="1_wjxjj"]
+[ext_resource type="Script" path="res://game/Event.gd" id="2_qajpt"]
+
+[node name="Scene" type="Node2D"]
+
+[node name="Events" type="Node" parent="."]
+script = ExtResource("1_wjxjj")
+
+[node name="EventList" type="Node" parent="Events"]
+
+[node name="Event1" type="Node" parent="Events/EventList"]
+script = ExtResource("2_qajpt")
