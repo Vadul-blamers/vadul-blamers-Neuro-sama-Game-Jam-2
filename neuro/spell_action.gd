@@ -1,5 +1,5 @@
-extends NeuroAction
 class_name SpellAction
+extends NeuroAction
 
 var _integration: NeuroIntegration
 var _description: String

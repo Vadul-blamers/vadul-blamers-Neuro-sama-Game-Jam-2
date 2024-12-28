@@ -131,7 +131,7 @@ position = Vector2(4.76837e-07, 4.76837e-07)
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_w64nv")
 animation = &"Walking down"
-frame_progress = 0.78288
+frame_progress = 0.689555
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vrbij")
