@@ -15,7 +15,7 @@ func chooseEvent(choices : Array[int]):
 	for i in choices.size():
 
 		var choice = choices[i];
-		var e = events.getEvent(choice)
+		var e = events.getEvent(choice);
 		if (e.isPositive()):
 			weights[i] = positiveValue * sqrt(positive);
 		else:
