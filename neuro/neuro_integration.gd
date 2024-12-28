@@ -41,7 +41,12 @@ func _get_ability_by_name(spell_name: String) -> AbilityContainer:
 	return null
 
 func _get_ability_names() -> Array[String]:
-	return _selected_spells.map(func(ability): return ability.name)
+	var result:Array[String] = []
+	_selected_spells.all(func(ability):
+		result.push_back(ability.name)
+		return true
+	)
+	return result
 
 func _get_combined_tooltips() -> String:
 	var combined_tooltip: String = ""

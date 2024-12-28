@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c22yxfeqye05h"]
+[gd_scene load_steps=9 format=3 uid="uid://c22yxfeqye05h"]
 
 [ext_resource type="Theme" uid="uid://cd2iy5r0u86vj" path="res://assets/ui/theme.tres" id="1_8wco2"]
 [ext_resource type="Script" path="res://game/ui/ai_control.gd" id="1_iu083"]
@@ -6,8 +6,8 @@
 [ext_resource type="Script" path="res://ability/Ability.gd" id="3_inn7q"]
 [ext_resource type="Resource" uid="uid://celpodlo5ymgt" path="res://ability/BlankAbility.tres" id="4_4iaoj"]
 [ext_resource type="Texture2D" uid="uid://w6tvqnoxb5re" path="res://assets/ui/Colored/grey.png" id="4_d74ch"]
-[ext_resource type="Script" path="res://neuro/neuro_integration.gd" id="7_howro"]
 [ext_resource type="PackedScene" uid="uid://civlssogrw6f4" path="res://game/ai/random/RandomAI.tscn" id="5_vnlnv"]
+[ext_resource type="Script" path="res://neuro/neuro_integration.gd" id="7_howro"]
 
 [node name="AiControl" type="Control" node_paths=PackedStringArray("turn_timer", "turn_about_to_end_timer", "card_selection_finished_timer")]
 physics_interpolation_mode = 1
@@ -28,6 +28,9 @@ timer_warning_color = Color(0.956863, 0, 0, 1)
 available_abilities = Array[ExtResource("3_inn7q")]([ExtResource("4_4iaoj")])
 
 [node name="RandomAi" parent="." instance=ExtResource("5_vnlnv")]
+
+[node name="NeuroIntegration" type="Node" parent="."]
+script = ExtResource("7_howro")
 
 [node name="MainContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -137,11 +140,8 @@ one_shot = true
 [node name="CardSelectionAnimationFinished" type="Timer" parent="."]
 one_shot = true
 
-[node name="NeuroIntegration" type="Node" parent="."]
-script = ExtResource("7_howro")
-
-[connection signal="options_generated" from="." to="NeuroIntegration" method="_on_ai_control_options_generated"]
 [connection signal="options_generated" from="." to="RandomAi" method="_on_selections_available"]
+[connection signal="options_generated" from="." to="NeuroIntegration" method="_on_ai_control_options_generated"]
 [connection signal="turn_about_to_end" from="." to="RandomAi" method="_on_turn_about_to_end"]
 [connection signal="turn_end" from="." to="RandomAi" method="_on_turn_end"]
 [connection signal="turn_start" from="." to="RandomAi" method="_on_turn_start"]
