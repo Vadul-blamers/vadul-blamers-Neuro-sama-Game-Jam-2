@@ -8,8 +8,8 @@ script = ExtResource("1_42vdw")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(644, 364)
 
-[node name="Layout" type="TileMapLayer" parent="."]
-
 [node name="RoomInterior" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomInterior"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
