@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dw76x23gafrpo"]
+[gd_scene load_steps=3 format=3 uid="uid://dw76x23gafrpo"]
 
 [ext_resource type="Texture2D" uid="uid://bc37hocpnbymu" path="res://icon.svg" id="1_hsjtk"]
+[ext_resource type="Script" path="res://ability/blank_ability.gd" id="2_cmj2p"]
 
 [node name="Icon" type="TextureRect"]
 custom_minimum_size = Vector2(128, 128)
@@ -8,3 +9,4 @@ offset_right = 128.0
 offset_bottom = 128.0
 texture = ExtResource("1_hsjtk")
 expand_mode = 1
+script = ExtResource("2_cmj2p")

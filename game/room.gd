@@ -3,44 +3,52 @@ class_name Room
 #this class contains the physical appearance and triggers for a room
 #compared to RoomData which contains the functionality of a room
 
+#the types of rooms that a room can be set to
+enum RoomTypes{
+	SPAWN,
+	ENEMY,
+	END,
+	EMPTY
+}
+#the room type that a room will be, set in the editor so that the same room base can be set to different rooms
+@export var room_type: RoomTypes
+
 #the data for the type of room this room is
-@export var room_data: RoomData
+var room_data: RoomData
 
-#variables for if the room has rooms to each direction of it
-@export var room_to_north:= false
-@export var room_to_east:= false
-@export var room_to_south:= false
-@export var room_to_west:= false
+#the map the room belongs to
+var map: Map
 
-#do transitions based on hitting a certain point in a room you are NOT currently in?
-#avoids the issue of switching rooms too early
-
-#for all the directions that do not have rooms in that direction, add the walls back and create collision
+#set up the room 
 func _ready() -> void:
-	if not room_to_north:
-		$NorthWall/Wall.visible = true
-		$NorthWall/BlockCollision/CollisionShape2D.set_deferred("disabled", false)
-	if not room_to_east:
-		$EastWall/Wall.visible = true
-		$EastWall/BlockCollision/CollisionShape2D.set_deferred("disabled", false)
-	if not room_to_south:
-		$SouthWall/Wall.visible = true
-		$SouthWall/BlockCollision/CollisionShape2D.set_deferred("disabled", false)
-	if not room_to_west:
-		$WestWall/Wall.visible = true
-		$WestWall/BlockCollision/CollisionShape2D.set_deferred("disabled", false)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	#set the map variable to the current map
+	map = get_parent()
 	
+	#depending on the room type set to each room, initialize the room data
+	match room_type:
+		RoomTypes.SPAWN:
+			room_data = SpawnRoomData.new()
+			_entered_room()
+		RoomTypes.ENEMY:
+			room_data = EnemyRoomData.new()
+		RoomTypes.END:
+			room_data = EndRoomData.new()
+		RoomTypes.EMPTY:
+			room_data = EmptyRoomData.new()
 	
-#check to see if the player did in fact enter the room
+#trigger logic for when the room is entered
 func _entered_room() -> void:
-	
-	#pseudocode -- if player collides with room transition and map.current_room is not this room: 
-	if true:
-		$Camera2D.make_current() #move camera to new room
-		room_data.on_enter_room() #activate room switching logic
-	pass
+	$Camera2D.make_current() #move camera to new room
+	map.move_ui() #move the ui--note that this is a mostly a placeholder
+	map.current_room = self
+	room_switched.emit(self)
+	room_data.on_enter_room() #activate room switching logic
+
+#if the room was entered and the room is not the room the player is currently in, trigger the room entry effects
+#might want to separate this for the camera vs room entry effects 
+func _on_room_interior_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D and not map.current_room == self:
+		_entered_room()
+		
+#signal for when the room is swapped
+signal room_switched(room: Room)
