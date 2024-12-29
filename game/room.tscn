@@ -6,7 +6,7 @@
 script = ExtResource("1_42vdw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(644, 168)
+position = Vector2(640, 368)
 
 [node name="RoomInterior" type="Area2D" parent="."]
 
