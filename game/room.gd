@@ -7,7 +7,8 @@ class_name Room
 enum RoomTypes{
 	SPAWN,
 	ENEMY,
-	END
+	END,
+	EMPTY
 }
 #the room type that a room will be, set in the editor so that the same room base can be set to different rooms
 @export var room_type: RoomTypes
@@ -32,6 +33,8 @@ func _ready() -> void:
 			room_data = EnemyRoomData.new()
 		RoomTypes.END:
 			room_data = EndRoomData.new()
+		RoomTypes.EMPTY:
+			room_data = EmptyRoomData.new()
 	
 #trigger logic for when the room is entered
 func _entered_room() -> void:
