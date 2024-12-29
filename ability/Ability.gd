@@ -18,6 +18,7 @@ var tooltip:StringName = "fill me"
 var icon:PackedScene
 
 #spawned into the scene on use.
+#it WILL appear on top of the player!
 @export
 var on_use:PackedScene
 

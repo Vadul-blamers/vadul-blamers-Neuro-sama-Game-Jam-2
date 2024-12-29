@@ -33,6 +33,10 @@ var _ability_grid = $MainContainer/VBoxContainer/Panel/AbilityGrid
 var ability_cards:Array[AbilityCard] = []
 var selected_ability:AbilityContainer = null
 
+
+var _positive_abilities: Array[AbilityContainer]
+var _negative_abilities: Array[AbilityContainer]
+
 signal turn_about_to_end
 signal turn_end
 signal turn_start
@@ -45,12 +49,22 @@ func _ready():
 		turn_about_to_end_timer.start(turn_warning_time)
 		pass)
 	turn_timer.start(turn_time-turn_warning_time)
-	_generate_ability_roster()
 	_timer_bar.max_value = turn_time+turn_warning_time
 	_ability_grid.get_children().all(func(item:Node):
 		ability_cards.push_back(item as AbilityCard)
 		return true
 	)
+	available_abilities.all(func(ability:AbilityContainer):
+		if ability.is_positive:
+			_positive_abilities.push_back(ability)
+			pass
+		else:
+			_negative_abilities.push_back(ability)
+			pass
+		return true
+		pass)
+	_maximum_positive_events = ability_cards.size()-1
+	_generate_ability_roster()
 	pass
 
 func _process(delta):
@@ -92,10 +106,33 @@ func _on_card_selection_animation_finished_timeout():
 	pass # Replace with function body.
 
 
+var _positive_events = 0
+var _maximum_positive_events = 4
+
 #How positive events should work:
 # - Initially there are zero to select
 # - When a negative event is selected it increases the amount of positive events next time
 # - Weight of positive events is low but multiplied by sqrt(positive events)
+# ignores the weight for now, if it's implemented then it will probably be done by adding multiple versions of the same item into the roster.
+func _pick_options()-> Array[AbilityContainer]:
+	var picked:Array[AbilityContainer] = []
+	var available_positive = _positive_abilities.duplicate()
+	if _positive_events>0 :
+		for i in range(0,_positive_events):
+			var current = available_positive.pick_random()
+			picked.push_back(current)
+			available_positive.erase(current)
+			pass
+		pass
+	var available_negative = _negative_abilities.duplicate()
+	for i in range(picked.size()-1,ability_cards.size()-1):
+		var current = available_negative.pick_random()
+		picked.push_back(current)
+		available_negative.erase(current)
+		pass
+	picked.shuffle()
+	return picked
+
 #pick 
 func _generate_ability_roster():
 	var options: Array[AbilityContainer]
@@ -115,6 +152,14 @@ func ability_selected(index:int):
 	var unselected = all
 	selected.chosen()
 	selected_ability = selected.ability
+	if selected_ability.is_positive:
+		if _positive_events >0:
+			_positive_events-=1
+	else:
+		if _positive_events< _maximum_positive_events:
+			if randf() >.5:
+				_positive_events += 1
+		pass
 	unselected.all(func(item):
 		item.discarded()
 		return true

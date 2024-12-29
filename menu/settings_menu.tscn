@@ -28,37 +28,72 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Container"]
+[node name="PanelContainer" type="PanelContainer" parent="Container"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Container/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/PanelContainer/MarginContainer"]
 custom_minimum_size = Vector2(512, 128)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Container/VBoxContainer"]
+[node name="Label" type="Label" parent="Container/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "These settings are intended to be used by Vedal in case Neuro either answers too early or too late.
+If it fails, blame Vadul.
+
+NOT intended to be used to tweak difficulty, but feel free to lower it.
+
+There is also no validation on these fields, only input (floting point) numbers.
+
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 tooltip_text = "How long Neuro has to pick an action"
 
-[node name="Label" type="Label" parent="Container/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Container/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Turn time"
 
-[node name="TurnTime" type="TextEdit" parent="Container/VBoxContainer/HBoxContainer"]
+[node name="TurnTime" type="TextEdit" parent="Container/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 selecting_enabled = false
 scroll_fit_content_height = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Container/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Container/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 tooltip_text = "How much time needs to be left for Neuro to be warned that the time is running out.
 Also the time when the built-in AI makes a choice."
 
-[node name="Label" type="Label" parent="Container/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="Container/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Turn warning time"
 
-[node name="TurnWarningTime" type="TextEdit" parent="Container/VBoxContainer/HBoxContainer2"]
+[node name="TurnWarningTime" type="TextEdit" parent="Container/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+scroll_fit_content_height = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Container/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "There is a delay between turns, it can not be lower than 2 seconds."
+
+[node name="Label" type="Label" parent="Container/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Turn Delay"
+
+[node name="TurnDelay" type="TextEdit" parent="Container/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 scroll_fit_content_height = true
