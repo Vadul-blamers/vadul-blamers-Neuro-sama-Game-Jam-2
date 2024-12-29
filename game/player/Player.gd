@@ -4,6 +4,7 @@ extends CharacterBody2D
 var speed:float = 300.0
 @export
 var health = 30.0
+
 var cam_lock :bool = true
 var mouse_location
 var character_location
@@ -12,7 +13,6 @@ var mouse_relative_position
 
 func _ready():
 	GameState.player = self
-
 
 func _physics_process(_delta):
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

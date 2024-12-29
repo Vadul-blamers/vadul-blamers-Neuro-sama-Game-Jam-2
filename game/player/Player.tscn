@@ -91,7 +91,7 @@ script = ExtResource("3_sgtsl")
 [node name="Crosshair" type="Sprite2D" parent="Node/Marker2D"]
 texture = ExtResource("3_47pir")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="Healthbar" type="TextureProgressBar" parent="."]
 offset_left = -21.0
 offset_top = -26.0
 offset_right = 143.0
