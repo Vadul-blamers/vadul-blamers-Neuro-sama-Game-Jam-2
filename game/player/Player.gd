@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 @export
 var speed:float = 300.0
-
+@export
+var health = 30.0
 var cam_lock :bool = true
 var mouse_location
 var character_location

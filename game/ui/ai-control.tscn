@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c22yxfeqye05h"]
+[gd_scene load_steps=10 format=3 uid="uid://c22yxfeqye05h"]
 
 [ext_resource type="Theme" uid="uid://cd2iy5r0u86vj" path="res://assets/ui/theme.tres" id="1_8wco2"]
 [ext_resource type="Script" path="res://game/ui/ai_control.gd" id="1_iu083"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://ability/Ability.gd" id="3_inn7q"]
 [ext_resource type="Resource" uid="uid://celpodlo5ymgt" path="res://ability/BlankAbility.tres" id="4_4iaoj"]
 [ext_resource type="Texture2D" uid="uid://w6tvqnoxb5re" path="res://assets/ui/Colored/grey.png" id="4_d74ch"]
+[ext_resource type="Resource" uid="uid://6qfvqv50fd3o" path="res://ability/more-neuros/more_neuros.tres" id="4_myyff"]
 [ext_resource type="PackedScene" uid="uid://civlssogrw6f4" path="res://game/ai/random/RandomAI.tscn" id="5_vnlnv"]
 [ext_resource type="Script" path="res://neuro/neuro_integration.gd" id="7_howro"]
 
@@ -24,7 +25,7 @@ turn_about_to_end_timer = NodePath("TurnAboutToEndTimer")
 card_selection_finished_timer = NodePath("CardSelectionAnimationFinished")
 timer_color = Color(0, 0.866667, 0, 1)
 timer_warning_color = Color(0.956863, 0, 0, 1)
-available_abilities = Array[ExtResource("3_inn7q")]([ExtResource("4_4iaoj")])
+available_abilities = Array[ExtResource("3_inn7q")]([ExtResource("4_myyff"), ExtResource("4_4iaoj")])
 
 [node name="RandomAi" parent="." instance=ExtResource("5_vnlnv")]
 

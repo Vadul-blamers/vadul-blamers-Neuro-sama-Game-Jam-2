@@ -6,7 +6,6 @@ var entity_container: Node
 func _ready():
 	pass
 
-
 func _on_ai_control_option_selected(ability:AbilityContainer):
 	var position = GameState.player.position
 	var effect = ability.on_use.instantiate()
@@ -14,5 +13,4 @@ func _on_ai_control_option_selected(ability:AbilityContainer):
 		effect.position = position
 		pass)
 	entity_container.add_child(effect)
-	
 	pass
