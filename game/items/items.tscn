@@ -10,3 +10,12 @@ script = ExtResource("1_ffq42")
 
 [node name="Item1" type="Node" parent="ItemList"]
 script = ExtResource("2_otm7m")
+
+[node name="Item2" type="Node" parent="ItemList"]
+script = ExtResource("2_otm7m")
+
+[node name="Item3" type="Node" parent="ItemList"]
+script = ExtResource("2_otm7m")
+
+[node name="Item4" type="Node" parent="ItemList"]
+script = ExtResource("2_otm7m")
