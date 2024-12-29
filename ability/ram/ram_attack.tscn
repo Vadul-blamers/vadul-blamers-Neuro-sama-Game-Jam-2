@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://y612ot8ppuih"]
+
+[ext_resource type="Script" path="res://ability/ram/ram_attack_spawner.gd" id="1_hjy4c"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_hjy4c")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

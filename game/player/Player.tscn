@@ -1,66 +1,192 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4jprwcfx7c8e"]
+[gd_scene load_steps=29 format=3 uid="uid://b4jprwcfx7c8e"]
 
 [ext_resource type="Script" path="res://game/player/Player.gd" id="1_34ufq"]
-[ext_resource type="Texture2D" uid="uid://d106f7rwb8jb2" path="res://assets/sprites/vedal.png" id="2_g8tuq"]
+[ext_resource type="PackedScene" uid="uid://y612ot8ppuih" path="res://ability/ram/ram_attack.tscn" id="2_ud31e"]
 [ext_resource type="Texture2D" uid="uid://dipd01j3g53or" path="res://assets/sprites/crosshair.png" id="3_47pir"]
+[ext_resource type="Texture2D" uid="uid://d2208uq58uasa" path="res://assets/sprites/vedal.png" id="3_51xku"]
 [ext_resource type="Script" path="res://game/player/marker_2d.gd" id="3_sgtsl"]
-[ext_resource type="Texture2D" uid="uid://j5oev7d28jjn" path="res://assets/ui/Colored/red_pressed.png" id="5_ebao6"]
+[ext_resource type="Theme" uid="uid://cd2iy5r0u86vj" path="res://assets/ui/theme.tres" id="6_67ajg"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i5h2o"]
-atlas = ExtResource("2_g8tuq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4of6m"]
+atlas = ExtResource("3_51xku")
 region = Rect2(0, 0, 31, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ekdyi"]
-atlas = ExtResource("2_g8tuq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1iru"]
+atlas = ExtResource("3_51xku")
+region = Rect2(31, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cr5i"]
+atlas = ExtResource("3_51xku")
+region = Rect2(62, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1k2c"]
+atlas = ExtResource("3_51xku")
+region = Rect2(93, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ibwj"]
+atlas = ExtResource("3_51xku")
 region = Rect2(0, 0, 31, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qgrkx"]
-atlas = ExtResource("2_g8tuq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gqw3"]
+atlas = ExtResource("3_51xku")
 region = Rect2(0, 31, 31, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g71cf"]
-atlas = ExtResource("2_g8tuq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpxyq"]
+atlas = ExtResource("3_51xku")
 region = Rect2(0, 62, 31, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vsjr2"]
-atlas = ExtResource("2_g8tuq")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1f32f"]
+atlas = ExtResource("3_51xku")
 region = Rect2(0, 93, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjrt5"]
+atlas = ExtResource("3_51xku")
+region = Rect2(31, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5j8d"]
+atlas = ExtResource("3_51xku")
+region = Rect2(31, 31, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puthv"]
+atlas = ExtResource("3_51xku")
+region = Rect2(31, 62, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2d2r"]
+atlas = ExtResource("3_51xku")
+region = Rect2(31, 93, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a4ay"]
+atlas = ExtResource("3_51xku")
+region = Rect2(62, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq7w8"]
+atlas = ExtResource("3_51xku")
+region = Rect2(62, 31, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k80g8"]
+atlas = ExtResource("3_51xku")
+region = Rect2(62, 62, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk3v7"]
+atlas = ExtResource("3_51xku")
+region = Rect2(62, 93, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2gs0"]
+atlas = ExtResource("3_51xku")
+region = Rect2(93, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbi03"]
+atlas = ExtResource("3_51xku")
+region = Rect2(93, 31, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yl6bm"]
+atlas = ExtResource("3_51xku")
+region = Rect2(93, 62, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_um5j3"]
+atlas = ExtResource("3_51xku")
+region = Rect2(93, 93, 31, 31)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w64nv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i5h2o")
+"texture": SubResource("AtlasTexture_4of6m")
 }],
 "loop": true,
 "name": &"Idle down",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1iru")
+}],
 "loop": true,
-"name": &"idle left",
+"name": &"Idle left",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ekdyi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qgrkx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g71cf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vsjr2")
+"texture": SubResource("AtlasTexture_5cr5i")
 }],
 "loop": true,
-"name": &"walking down",
-"speed": 8.0
+"name": &"Idle right",
+"speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1k2c")
+}],
 "loop": true,
-"name": &"walking left",
+"name": &"Idle up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ibwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gqw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpxyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f32f")
+}],
+"loop": true,
+"name": &"Walking down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjrt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5j8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puthv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2d2r")
+}],
+"loop": true,
+"name": &"Walking left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1a4ay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nq7w8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k80g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk3v7")
+}],
+"loop": true,
+"name": &"Walking right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2gs0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbi03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yl6bm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_um5j3")
+}],
+"loop": true,
+"name": &"Walking up",
 "speed": 5.0
 }]
 
@@ -68,16 +194,16 @@ animations = [{
 radius = 20.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-collision_layer = 19
-collision_mask = 19
 motion_mode = 1
 script = ExtResource("1_34ufq")
+
+[node name="Node2D" parent="." instance=ExtResource("2_ud31e")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(4.76837e-07, 4.76837e-07)
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_w64nv")
-animation = &"idle left"
+animation = &"Idle right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vrbij")
@@ -91,17 +217,30 @@ script = ExtResource("3_sgtsl")
 [node name="Crosshair" type="Sprite2D" parent="Node/Marker2D"]
 texture = ExtResource("3_47pir")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = -21.0
-offset_top = -26.0
-offset_right = 143.0
-offset_bottom = -6.0
-scale = Vector2(0.25, 0.25)
-value = 100.0
-fill_mode = 6
-nine_patch_stretch = true
-stretch_margin_left = 5
-stretch_margin_top = 5
-stretch_margin_right = 5
-stretch_margin_bottom = 5
-texture_progress = ExtResource("5_ebao6")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Control" parent="CanvasLayer"]
+custom_minimum_size = Vector2(800, 70)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 800.0
+offset_bottom = 70.0
+theme = ExtResource("6_67ajg")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -209.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="itemContainer" type="GridContainer" parent="CanvasLayer/Panel/MarginContainer"]
+layout_mode = 2
+columns = 5

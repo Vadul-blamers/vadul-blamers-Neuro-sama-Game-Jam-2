@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8sbuu5shyk3n"]
+[gd_scene load_steps=5 format=4 uid="uid://tvrx7gwbhiql"]
 
 [ext_resource type="Script" path="res://game/map.gd" id="1_tx77q"]
-[ext_resource type="PackedScene" uid="uid://de1uf2ncm7cef" path="res://game/city_room.tscn" id="2_la8ri"]
+[ext_resource type="PackedScene" path="res://game/city_room.tscn" id="2_la8ri"]
 [ext_resource type="TileSet" uid="uid://d0tryqx4fvky4" path="res://game/map/tileset.tres" id="4_k28nq"]
 [ext_resource type="PackedScene" uid="uid://b4jprwcfx7c8e" path="res://game/player/Player.tscn" id="5_5yexu"]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2208uq58uasa"
-path="res://.godot/imported/vedal.png-89152611534b36c04d6d875bba2bb762.ctex"
+uid="uid://cispc3vb4onwh"
+path="res://.godot/imported/fruit-snacks.png-6437a9715cf362d17cd4ce68dd57e3c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/vedal.png"
-dest_files=["res://.godot/imported/vedal.png-89152611534b36c04d6d875bba2bb762.ctex"]
+source_file="res://ability/fruit-snacks/fruit-snacks.png"
+dest_files=["res://.godot/imported/fruit-snacks.png-6437a9715cf362d17cd4ce68dd57e3c0.ctex"]
 
 [params]
 
