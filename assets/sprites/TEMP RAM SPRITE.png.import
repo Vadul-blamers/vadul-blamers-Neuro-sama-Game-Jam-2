@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2208uq58uasa"
-path="res://.godot/imported/vedal.png-89152611534b36c04d6d875bba2bb762.ctex"
+uid="uid://bci12s3okanym"
+path="res://.godot/imported/TEMP RAM SPRITE.png-e33039f5bb218acab90ebb9fa4230757.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/vedal.png"
-dest_files=["res://.godot/imported/vedal.png-89152611534b36c04d6d875bba2bb762.ctex"]
+source_file="res://assets/sprites/TEMP RAM SPRITE.png"
+dest_files=["res://.godot/imported/TEMP RAM SPRITE.png-e33039f5bb218acab90ebb9fa4230757.ctex"]
 
 [params]
 

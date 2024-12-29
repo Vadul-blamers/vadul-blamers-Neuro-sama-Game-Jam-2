@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3gk3byci4bta"]
+
+[ext_resource type="Texture2D" uid="uid://cispc3vb4onwh" path="res://ability/fruit-snacks/fruit-snacks.png" id="1_fj5ws"]
+
+[node name="Visual" type="TextureRect"]
+custom_minimum_size = Vector2(64, 64)
+texture = ExtResource("1_fj5ws")

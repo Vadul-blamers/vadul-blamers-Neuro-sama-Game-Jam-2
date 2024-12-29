@@ -35,6 +35,7 @@ position = Vector2(0, -1472)
 room_type = 1
 
 [node name="GreggsRoom8" parent="." instance=ExtResource("1_hkg5b")]
+
 position = Vector2(0, -2208)
 room_type = 1
 

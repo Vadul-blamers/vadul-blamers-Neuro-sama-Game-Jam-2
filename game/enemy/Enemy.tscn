@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://bes3h8osl2j2a"]
+[gd_scene load_steps=26 format=3 uid="uid://bes3h8osl2j2a"]
 
 [ext_resource type="Script" path="res://game/enemy/enemy.gd" id="1_yakek"]
 [ext_resource type="Texture2D" uid="uid://c2gpl3xq3l5ty" path="res://assets/sprites/TEMP WALK SOUTH VEDAL.png" id="2_s0hxn"]
 [ext_resource type="Shader" path="res://assets/glitch.gdshader" id="3_10br2"]
+[ext_resource type="Script" path="res://game/enemy/attack_area.gd" id="4_c3oeg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rd37t"]
 atlas = ExtResource("2_s0hxn")
@@ -183,6 +184,9 @@ _data = {
 "fade-in": SubResource("Animation_8x3e6")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_txcjg"]
+radius = 25.0
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 7
@@ -219,4 +223,18 @@ libraries = {
 }
 autoplay = "fade-in"
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_c3oeg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_txcjg")
+
+[node name="Timer" type="Timer" parent="Area2D"]
+wait_time = 5.0
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_timer_timeout"]

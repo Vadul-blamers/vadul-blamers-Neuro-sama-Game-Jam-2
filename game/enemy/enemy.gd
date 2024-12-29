@@ -1,12 +1,18 @@
 extends CharacterBody2D
 
+signal health_changed(to:int)
+
 @export 
 var movement_speed: float = 4.0
 @onready 
 var navigation_agent =$NavigationAgent2D
 
 @export
-var health = 2
+var health = 2:
+	set(value):
+		health = value
+		health_changed.emit(health)
+	
 
 var _active = false
 func _ready():

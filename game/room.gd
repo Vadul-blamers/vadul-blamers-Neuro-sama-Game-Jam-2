@@ -40,7 +40,6 @@ func _ready() -> void:
 func _entered_room() -> void:
 	$Camera2D.make_current() #move camera to new room
 	GameState.set_current_room(self)
-	#map.current_room = self
 	room_switched.emit(self)
 	room_data.on_enter_room() #activate room switching logic
 

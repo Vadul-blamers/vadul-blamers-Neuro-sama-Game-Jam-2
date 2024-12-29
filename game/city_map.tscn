@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://c8sbuu5shyk3n"]
+[gd_scene load_steps=5 format=4 uid="uid://tvrx7gwbhiql"]
 
 [ext_resource type="Script" path="res://game/map.gd" id="1_tx77q"]
-[ext_resource type="PackedScene" uid="uid://de1uf2ncm7cef" path="res://game/city_room.tscn" id="2_la8ri"]
-[ext_resource type="Texture2D" uid="uid://c35y0q16lpj8p" path="res://assets/art/bg.png" id="3_vwh5r"]
+[ext_resource type="PackedScene" path="res://game/city_room.tscn" id="2_la8ri"]
 [ext_resource type="TileSet" uid="uid://d0tryqx4fvky4" path="res://game/map/tileset.tres" id="4_k28nq"]
 [ext_resource type="PackedScene" uid="uid://b4jprwcfx7c8e" path="res://game/player/Player.tscn" id="5_5yexu"]
 
@@ -70,9 +69,3 @@ tile_set = ExtResource("4_k28nq")
 
 [node name="Player" parent="." instance=ExtResource("5_5yexu")]
 position = Vector2(644, 328)
-
-[node name="Placeholder" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(645, 98)
-scale = Vector2(128.9, 19.5)
-texture = ExtResource("3_vwh5r")

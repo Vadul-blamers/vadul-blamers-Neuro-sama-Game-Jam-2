@@ -1,11 +1,15 @@
-[gd_resource type="Resource" script_class="AbilityContainer" load_steps=2 format=3 uid="uid://d0o7gteywjncw"]
+[gd_resource type="Resource" script_class="AbilityContainer" load_steps=4 format=3 uid="uid://d0o7gteywjncw"]
 
 [ext_resource type="Script" path="res://ability/Ability.gd" id="1_4l0dn"]
+[ext_resource type="PackedScene" uid="uid://b6e8mmy867p4w" path="res://ability/fruit-snacks/FruitSnacks.tscn" id="1_nbj5q"]
+[ext_resource type="PackedScene" uid="uid://d3gk3byci4bta" path="res://ability/fruit-snacks/visual.tscn" id="1_xlp48"]
 
 [resource]
 script = ExtResource("1_4l0dn")
-name = &""
+name = &"Fruit snacks"
 description = &""
 tooltip = &"fill me"
+icon = ExtResource("1_xlp48")
+on_use = ExtResource("1_nbj5q")
 specialWeightFactor = 1.0
 is_positive = false
