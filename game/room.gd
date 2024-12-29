@@ -39,7 +39,6 @@ func _ready() -> void:
 #trigger logic for when the room is entered
 func _entered_room() -> void:
 	$Camera2D.make_current() #move camera to new room
-	map.move_ui() #move the ui--note that this is a mostly a placeholder
 	map.current_room = self
 	room_switched.emit(self)
 	room_data.on_enter_room() #activate room switching logic

@@ -28,7 +28,7 @@ var available_abilities: Array[AbilityContainer]
 @onready
 var _timer_bar = $MainContainer/VBoxContainer/TimerContainer/TimerBar
 @onready
-var _ability_grid = $MainContainer/VBoxContainer/Panel/AbilityGrid
+var _ability_grid = $MainContainer/VBoxContainer/Panel/MarginContainer/AbilityGrid
 
 var ability_cards:Array[AbilityCard] = []
 var selected_ability:AbilityContainer = null

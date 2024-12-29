@@ -23,9 +23,18 @@ var mouse_relative_position
 func _ready():
 	GameState.player = self
 	items.all(func(item:AbilityContainer):
-		add_child(item.on_use.instantiate())
-		item_container.add_child(item.icon.instantiate())
+		add_item(item)
+		return true
 		pass)
+
+func add_item(item:AbilityContainer):
+	add_child(item.on_use.instantiate())
+	var icon = item.icon.instantiate()
+	icon.scale = Vector2(.5,.5)
+	item_container.add_child(icon)
+	if !items.has(item):
+		items.push_back(item)
+	pass
 
 func _physics_process(_delta):
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -42,8 +51,6 @@ func _physics_process(_delta):
 	else:
 		_walking_animations()
 	move_and_slide()
-
-
 
 func _direction_facing(orientation):
 	if abs(orientation.x) > abs(orientation.y):

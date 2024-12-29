@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://dxt5l0rhdtop7"]
+[gd_scene load_steps=6 format=4 uid="uid://cjpd5v7k0d8a1"]
 
 [ext_resource type="Script" path="res://game/map.gd" id="1_h045q"]
-[ext_resource type="PackedScene" uid="uid://kall6jxnn6ho" path="res://game/mansion_room.tscn" id="2_68yhn"]
+[ext_resource type="PackedScene" path="res://game/mansion_room.tscn" id="2_68yhn"]
 [ext_resource type="TileSet" uid="uid://d0tryqx4fvky4" path="res://game/map/tileset.tres" id="3_fw86c"]
 [ext_resource type="PackedScene" uid="uid://b4jprwcfx7c8e" path="res://game/player/Player.tscn" id="4_ntokc"]
 [ext_resource type="Texture2D" uid="uid://c35y0q16lpj8p" path="res://assets/art/bg.png" id="5_twuat"]

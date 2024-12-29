@@ -9,20 +9,19 @@ script/source = "extends Area2D
 var speed = 5000
 @export
 var damage = 1
-
-func _on_Projectile_body_entered(body):
-	body.health -= damage
-	if body.is_in_group(\"temp\"):
-		pass #change to damage calc
-
-func _ready():
-	look_at(get_local_mouse_position())
-
 	
+func _ready():
+	look_at(get_global_mouse_position())
+
 func _process(delta):
 	move_local_x(delta*speed)
 	
 func _on_timer_timeout():
+	queue_free()
+	pass # Replace with function body.
+
+func _on_body_entered(body):
+	body.health -= damage
 	queue_free()
 	pass # Replace with function body.
 "
@@ -84,6 +83,7 @@ _data = {
 [node name="RigidBody2D" type="Area2D"]
 collision_layer = 4
 collision_mask = 4
+monitorable = false
 script = SubResource("GDScript_bvuub")
 speed = 200
 
@@ -104,4 +104,5 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
