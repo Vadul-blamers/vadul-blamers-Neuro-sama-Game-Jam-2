@@ -33,7 +33,6 @@ var _ability_grid = $MainContainer/VBoxContainer/Panel/AbilityGrid
 var ability_cards:Array[AbilityCard] = []
 var selected_ability:AbilityContainer = null
 
-
 var _positive_abilities: Array[AbilityContainer]
 var _negative_abilities: Array[AbilityContainer]
 

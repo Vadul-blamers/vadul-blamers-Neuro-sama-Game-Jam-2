@@ -1,5 +1,8 @@
-extends RigidBody2D
+extends Area2D
+
+@export
 var speed = 5000
+
 var direction = Vector2()
 
 func _on_Projectile_body_entered(body):
@@ -7,6 +10,8 @@ func _on_Projectile_body_entered(body):
 		pass #change to damage calc
 
 func _ready():
-	if direction.length() > 0:
-		direction = direction.normalized()
-		apply_impulse(Vector2(), direction * speed)
+	look_at(get_local_mouse_position())
+	
+func _process(delta):
+	move_local_y(speed*delta)
+	pass
