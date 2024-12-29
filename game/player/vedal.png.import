@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2208uq58uasa"
-path="res://.godot/imported/vedal.png-89152611534b36c04d6d875bba2bb762.ctex"
+uid="uid://06jula2t74ye"
+path="res://.godot/imported/vedal.png-4ee0b099d9117142c0afd632b98777ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/vedal.png"
-dest_files=["res://.godot/imported/vedal.png-89152611534b36c04d6d875bba2bb762.ctex"]
+source_file="res://game/player/vedal.png"
+dest_files=["res://.godot/imported/vedal.png-4ee0b099d9117142c0afd632b98777ba.ctex"]
 
 [params]
 
