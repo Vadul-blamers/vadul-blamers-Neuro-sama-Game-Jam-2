@@ -39,14 +39,14 @@ func _ready() -> void:
 #trigger logic for when the room is entered
 func _entered_room() -> void:
 	$Camera2D.make_current() #move camera to new room
-	map.current_room = self
+	GameState.set_current_room(self)
 	room_switched.emit(self)
 	room_data.on_enter_room() #activate room switching logic
 
 #if the room was entered and the room is not the room the player is currently in, trigger the room entry effects
 #might want to separate this for the camera vs room entry effects 
 func _on_room_interior_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D and not map.current_room == self:
+	if body is CharacterBody2D and not GameState.get_current_room() == self:
 		_entered_room()
 		
 #signal for when the room is swapped
