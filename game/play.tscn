@@ -1,15 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyrq262chr3fb"]
+[gd_scene load_steps=8 format=3 uid="uid://cyrq262chr3fb"]
 
+[ext_resource type="Script" path="res://game/AbilityController.gd" id="1_q4egs"]
 [ext_resource type="PackedScene" uid="uid://c22yxfeqye05h" path="res://game/ui/ai-control.tscn" id="3_5iygr"]
+[ext_resource type="Script" path="res://ability/Ability.gd" id="3_nrnb5"]
+[ext_resource type="PackedScene" uid="uid://b4jprwcfx7c8e" path="res://game/player/Player.tscn" id="4_h7te2"]
+[ext_resource type="Resource" uid="uid://celpodlo5ymgt" path="res://ability/BlankAbility.tres" id="4_hke6y"]
 [ext_resource type="PackedScene" uid="uid://48p045d6g5uj" path="res://game/greggs_map.tscn" id="4_jvt5x"]
+[ext_resource type="Resource" uid="uid://6qfvqv50fd3o" path="res://ability/more-neuros/more_neuros.tres" id="5_wtaos"]
 
 [node name="Node2D" type="Node"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 10
+script = ExtResource("1_q4egs")
 
 [node name="AiControl" parent="CanvasLayer" instance=ExtResource("3_5iygr")]
 top_level = true
+available_abilities = Array[ExtResource("3_nrnb5")]([ExtResource("4_hke6y"), ExtResource("5_wtaos")])
 
 [node name="GreggsMap" parent="." instance=ExtResource("4_jvt5x")]
 position = Vector2(31, 4)
+
+[node name="EntityContainer" type="Node2D" parent="GreggsMap"]
+
+[node name="CharacterBody2D" parent="GreggsMap/EntityContainer" instance=ExtResource("4_h7te2")]
+position = Vector2(595, 335)
+
+[node name="AbilityController" type="Node" parent="." node_paths=PackedStringArray("entity_container")]
+script = ExtResource("1_q4egs")
+entity_container = NodePath("../GreggsMap/EntityContainer")
+
+[connection signal="option_selected" from="CanvasLayer/AiControl" to="AbilityController" method="_on_ai_control_option_selected"]

@@ -45,12 +45,12 @@ func _ready():
 		turn_about_to_end_timer.start(turn_warning_time)
 		pass)
 	turn_timer.start(turn_time-turn_warning_time)
-	_generate_ability_roster()
 	_timer_bar.max_value = turn_time+turn_warning_time
 	_ability_grid.get_children().all(func(item:Node):
 		ability_cards.push_back(item as AbilityCard)
 		return true
 	)
+	_generate_ability_roster()
 	pass
 
 func _process(delta):

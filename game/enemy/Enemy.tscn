@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bes3h8osl2j2a"]
+[gd_scene load_steps=24 format=3 uid="uid://bes3h8osl2j2a"]
 
 [ext_resource type="Script" path="res://game/enemy/enemy.gd" id="1_yakek"]
 [ext_resource type="Texture2D" uid="uid://c2gpl3xq3l5ty" path="res://assets/sprites/TEMP WALK SOUTH VEDAL.png" id="2_s0hxn"]
+[ext_resource type="Shader" path="res://assets/glitch.gdshader" id="3_10br2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rd37t"]
 atlas = ExtResource("2_s0hxn")
@@ -114,8 +115,73 @@ animations = [{
 "speed": 25.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_16jhc"]
+shader = ExtResource("3_10br2")
+shader_parameter/shake_power = 0.04
+shader_parameter/shake_rate = 0.528
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 50.0
+shader_parameter/shake_color_rate = 0.03
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_w841y"]
 radius = 21.587
+
+[sub_resource type="Animation" id="Animation_8x3e6"]
+resource_name = "fade-in"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 5)
+}
+
+[sub_resource type="Animation" id="Animation_wf2cq"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hxqaw"]
+_data = {
+"RESET": SubResource("Animation_wf2cq"),
+"fade-in": SubResource("Animation_8x3e6")
+}
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_yakek")
@@ -127,5 +193,28 @@ scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_ga0c6")
 animation = &"Walking down"
 
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_16jhc")
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_w841y")
+disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_hxqaw")
+}
+autoplay = "fade-in"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -22,7 +22,6 @@ script = ExtResource("1_iu083")
 turn_timer = NodePath("TurnWaitTimer")
 turn_about_to_end_timer = NodePath("TurnAboutToEndTimer")
 card_selection_finished_timer = NodePath("CardSelectionAnimationFinished")
-turn_time = 15.0
 timer_color = Color(0, 0.866667, 0, 1)
 timer_warning_color = Color(0.956863, 0, 0, 1)
 available_abilities = Array[ExtResource("3_inn7q")]([ExtResource("4_4iaoj")])
