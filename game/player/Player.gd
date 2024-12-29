@@ -8,44 +8,52 @@ var mouse_location
 var character_location
 var facing = "down"
 var mouse_relative_position
-
+var ram_attack_scene : PackedScene = preload("res://game/attacks/ram_attack.tscn")
+var attack_cooldown = 5
+var attack_timer = 0
 func _physics_process(_delta):
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = direction * speed
+	attack_timer += _delta
+	mouse_location = get_global_mouse_position()
+	character_location = global_position
+	mouse_relative_position = mouse_location - character_location
+	print(global_position)
 	if cam_lock:
 		_direction_facing(direction)
 	else:
-		mouse_location = get_global_mouse_position()
-		character_location = global_position
-		mouse_relative_position = mouse_location - character_location
-		print(mouse_relative_position)
 		_direction_facing(mouse_relative_position)
 	if velocity == Vector2(0,0) :
 		_idle_animations()
 	else:
 		_walking_animations()
 	move_and_slide()
+	if attack_timer > attack_cooldown:
+		attack_timer = 0
+		fire_RAM()
+
+
 
 func _direction_facing(orientation):
 	if abs(orientation.x) > abs(orientation.y):
 		if orientation.x > 0:
-			facing = "left"
-		else:
 			facing = "right"
+		else:
+			facing = "left"
 	else:
 		if orientation.y > 0:
 			facing = "down"
 		else:
-			facing = "north"
+			facing = "up"
 
 func _walking_animations():
 	match facing:
 		"left":
-			pass
+			$AnimatedSprite2D.play("Walking left")
 		"up":
-			pass
+			$AnimatedSprite2D.play("Walking up")
 		"right":
-			pass
+			$AnimatedSprite2D.play("Walking right")
 		"down":
 			$AnimatedSprite2D.play("Walking down")
 		_:
@@ -56,8 +64,15 @@ func _idle_animations():
 		"Walking down":
 			$AnimatedSprite2D.play("Idle down")
 		"Walking up":
-			pass
+			$AnimatedSprite2D.play("Idle up")
 		"Walking right":
-			pass
+			$AnimatedSprite2D.play("Idle right")
 		"Walking left":
-			pass
+			$AnimatedSprite2D.play("Idle left")
+
+func fire_RAM():
+	if ram_attack_scene:
+		var RAM_Projectile = ram_attack_scene.instantiate()
+		RAM_Projectile.position = global_position + (mouse_relative_position.normalized()*50)
+		RAM_Projectile.direction = mouse_relative_position.normalized()
+		get_tree().root.add_child(RAM_Projectile)

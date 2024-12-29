@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://banfmt6kjitfa"]
+
+[ext_resource type="Script" path="res://game/attacks/ram_attack.gd" id="1_b3ccw"]
+[ext_resource type="Texture2D" uid="uid://bci12s3okanym" path="res://assets/sprites/TEMP RAM SPRITE.png" id="2_tjv8o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfhbb"]
+atlas = ExtResource("2_tjv8o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_syxdb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfhbb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x817y"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_b3ccw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_syxdb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x817y")
