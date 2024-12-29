@@ -13,3 +13,4 @@ position = Vector2(644, 168)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomInterior"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
