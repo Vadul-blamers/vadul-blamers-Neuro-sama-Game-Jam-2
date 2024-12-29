@@ -8,9 +8,6 @@ size = Vector2(1232, 476)
 
 [node name="GreggsRoom" instance=ExtResource("1_nwk6y")]
 
-[node name="Camera2D" parent="." index="0"]
-position = Vector2(644, 168)
-
 [node name="CollisionShape2D" parent="RoomInterior" index="0"]
 position = Vector2(644, 266)
 shape = SubResource("RectangleShape2D_yq1rn")

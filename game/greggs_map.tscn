@@ -47,7 +47,6 @@ tile_set = ExtResource("5_lhflf")
 position = Vector2(644, 328)
 
 [node name="Placeholder" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(645, 98)
 scale = Vector2(128.9, 19.5)
 texture = ExtResource("4_isfhg")
