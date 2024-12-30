@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=4 uid="uid://cyrq262chr3fb"]
+[gd_scene load_steps=18 format=4 uid="uid://cyrq262chr3fb"]
 
+[ext_resource type="Script" path="res://game/map_music.gd" id="1_hmcpq"]
 [ext_resource type="Script" path="res://game/AbilityController.gd" id="1_q4egs"]
 [ext_resource type="PackedScene" uid="uid://c22yxfeqye05h" path="res://game/ui/ai-control.tscn" id="3_5iygr"]
 [ext_resource type="Script" path="res://ability/Ability.gd" id="3_nrnb5"]
@@ -9,13 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://bsi7r2mgjo75y" path="res://game/greggs_room.tscn" id="7_ngfa8"]
 [ext_resource type="TileSet" uid="uid://d0tryqx4fvky4" path="res://game/map/tileset.tres" id="8_hkx7d"]
 [ext_resource type="Script" path="res://game/entity_container.gd" id="8_mca03"]
+[ext_resource type="AudioStream" uid="uid://dy3lsjlt5lxer" path="res://assets/music/rum_road.mp3" id="8_qbb47"]
+[ext_resource type="AudioStream" uid="uid://dvc6y0jwywmgh" path="res://assets/music/coldfish_labyrinth.mp3" id="9_0bndj"]
 [ext_resource type="PackedScene" uid="uid://de1uf2ncm7cef" path="res://game/city_room.tscn" id="9_4216v"]
 [ext_resource type="PackedScene" uid="uid://bssytscupbctk" path="res://game/item_pickup/ItemPickup.tscn" id="10_4el8b"]
 [ext_resource type="PackedScene" uid="uid://bcrf8md4dkdln" path="res://game/mansion_room.tscn" id="10_k074d"]
 [ext_resource type="AudioStream" uid="uid://0yohdiyy3tkt" path="res://assets/music/greggs_smasher.mp3" id="11_50plb"]
-[ext_resource type="Resource" path="res://ability/raise-the-timer/raise_the_timer.tres" id="17_xsfck"]
+[ext_resource type="Resource" uid="uid://d0o7gteywjncw" path="res://ability/raise-the-timer/raise_the_timer.tres" id="17_xsfck"]
 
 [node name="Node2D" type="Node"]
+script = ExtResource("1_hmcpq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 10
@@ -33,6 +37,14 @@ entity_container = NodePath("../EntityContainer")
 stream = ExtResource("11_50plb")
 volume_db = -13.904
 autoplay = true
+
+[node name="RumRoad" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_qbb47")
+volume_db = -13.904
+
+[node name="ColdfishLabyrinth" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_0bndj")
+volume_db = -13.904
 
 [node name="Tiles3" type="TileMapLayer" parent="."]
 position = Vector2(-9, -7378)
