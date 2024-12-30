@@ -1,26 +1,52 @@
 extends Node
 
-@export var positiveValue = 2.0;
-var events : Events;
+@export var positiveValue = 0.8;
+var events : AI_Control;
 
-func chooseEvent(choices : Array[int]):
+signal made_selection(selected:int)
+
+var current_selection:Array[AbilityContainer] = []
+
+func _on_selections_available(options:Array[AbilityContainer]):
+	current_selection = options
+	pass
+
+func _on_turn_start():
+	pass
+
+func _on_turn_about_to_end():
+	var selected = chooseEvent(current_selection);
+	made_selection.emit(selected)
+
+func _on_turn_end():
+	current_selection = []
+	
+	
+func chooseEvent(choices : Array[AbilityContainer]):
+	var list = events.available_abilities;
+	
+	var ids : Array[float] = [];
+	ids.resize(choices.size());	
+	for i in choices.size():
+		ids[i]= list.find(choices[i]);
+	
 	var weights : Array[float] = [];
 	weights.resize(choices.size());
-	var history = events.getDamageHistory();
+	var history = events.damageHistory;
 	var positive = 0.0;
 	for c in choices:
-		var e = events.getEvent(c)
-		if (e.isPositive()):
+		if (c.isPositive()):
 			positive += 1.0;
 	for i in choices.size():
 
-		var choice = choices[i];
-		var e = events.getEvent(choice);
+		var id = ids[i];
+		var e = choices[i];
 		if (e.isPositive()):
 			weights[i] = positiveValue * sqrt(positive);
+			
 		else:
-			weights[i] = history[choice];
-			weights[i] *= events.getEvent(choice).specialWeightFactor();
+			weights[i] = history[id];
+			weights[i] *= e.specialWeightFactor();
 		# Maybe do some squaring or adding minimums or something here
 	return choices[weightedRandom(weights)];
 	
@@ -37,7 +63,7 @@ func weightedRandom(weights : Array[float]):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	events = get_node("/root/Events");
+	events = get_node("/root/ai-control");
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

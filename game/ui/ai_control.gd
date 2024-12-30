@@ -1,6 +1,6 @@
 #controls and displays the actions of the AI agent.
 extends Control
-
+class_name AI_Control
 @export 
 var turn_timer:Timer
 @export 
@@ -33,6 +33,7 @@ var _ability_grid = $MainContainer/VBoxContainer/Panel/MarginContainer/AbilityGr
 
 var ability_cards:Array[AbilityCard] = []
 var selected_ability:AbilityContainer = null
+@export var active_ability:AbilityContainer = null
 
 var _positive_abilities: Array[AbilityContainer]
 var _negative_abilities: Array[AbilityContainer]
@@ -42,6 +43,12 @@ signal turn_end
 signal turn_start
 signal options_generated(options:Array[AbilityContainer])
 signal option_selected(ability:AbilityContainer)
+
+var historyDecay : float = 1.33;
+var startHistory : float = 3;
+@export var damageHistory : Array[float] = [];
+var avgHistory = 5.0;
+var avgDecay = 1.2;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -66,6 +73,9 @@ func _ready():
 		pass)
 	_maximum_positive_events = ability_cards.size()-1
 	_generate_ability_roster()
+	
+	damageHistory.resize(available_abilities.size());
+	damageHistory.fill(startHistory);
 	pass
 
 func _process(delta):
@@ -88,6 +98,15 @@ func _on_turn_about_to_end_timer_timeout():
 	turn_end.emit()
 	card_selection_finished_timer.start(2)
 	_timer_bar.tint_progress = timer_color
+	
+	var DAMAGELASTTURNTODOFIGUREOUT = 1;
+	if active_ability != null:
+		var id = available_abilities.find(active_ability);
+		damageHistory[id] += DAMAGELASTTURNTODOFIGUREOUT / avgHistory * 5;
+		damageHistory[id] /= historyDecay;
+	avgHistory += DAMAGELASTTURNTODOFIGUREOUT;
+	avgHistory /= avgDecay;
+	
 	if selected_ability != null:
 		option_selected.emit(selected_ability)
 	_ability_grid.get_children().all(func(card:AbilityCard):
@@ -154,11 +173,10 @@ func ability_selected(index:int):
 	selected_ability = selected.ability
 	if selected_ability.is_positive:
 		if _positive_events >0:
-			_positive_events-=1
+			_positive_events = 0;
 	else:
 		if _positive_events< _maximum_positive_events:
-			if randf() >.5:
-				_positive_events += 1
+			_positive_events += 1;
 		pass
 	unselected.all(func(item):
 		item.discarded()

@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_l7ohm")
 name = &"Ram"
-description = &"You only have to throw more at your problems!"
+description = ""
 tooltip = &"fill me"
 icon = ExtResource("1_25a2e")
 on_use = ExtResource("2_mgw5g")
