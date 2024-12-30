@@ -6,10 +6,18 @@
 script = ExtResource("1_42vdw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(644, 168)
+position = Vector2(640, 368)
 
 [node name="RoomInterior" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoomInterior"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+
+[node name="RoomExits" type="TileMapLayer" parent="."]
+enabled = false
+
+[node name="CanLeaveRoom" type="Timer" parent="."]
+
+[connection signal="timeout" from="CanLeaveRoom" to="." method="_on_can_leave_room_timeout"]

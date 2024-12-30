@@ -6,8 +6,8 @@ extends Resource
 var name:StringName
 
 #description that that should also be passed to Neuro
-@export
-var description:StringName =""
+@export_multiline
+var description:String =""
 
 #Text used when the action shows on the UI
 @export
@@ -23,7 +23,7 @@ var icon:PackedScene
 var on_use:PackedScene
 
 @export
-var specialWeightFactor: float = 1.0
-
-@export
 var is_positive: bool = false
+
+func specialWeightFactor():
+	return 1;

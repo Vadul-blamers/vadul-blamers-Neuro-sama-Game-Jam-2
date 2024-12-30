@@ -24,7 +24,7 @@ GameState="*res://GameState.gd"
 [display]
 
 window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_height=736
 window/size/resizable=false
 window/stretch/mode="viewport"
 
@@ -45,6 +45,10 @@ enabled=PackedStringArray("res://addons/neuro-sdk/plugin.cfg")
 
 config/itch_username="Vadul Blamers "
 config/itch_project_name="neuro-jam-2024"
+
+[global_group]
+
+enemy=""
 
 [input]
 

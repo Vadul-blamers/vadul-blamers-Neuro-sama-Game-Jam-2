@@ -7,9 +7,8 @@
 [resource]
 script = ExtResource("1_s5jlk")
 name = &"Test"
-description = &"Nothing"
+description = ""
 tooltip = &"Nothing"
 icon = ExtResource("1_35cmn")
 on_use = ExtResource("2_21j4a")
-specialWeightFactor = 1.0
 is_positive = false

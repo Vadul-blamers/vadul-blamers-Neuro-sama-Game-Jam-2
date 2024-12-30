@@ -3,8 +3,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GameState.player.movement_speed += 10
-	#logic to make it display as an actual item for the player.
+	GameState.player.speed += 50
+	queue_free()
 	pass
 
 

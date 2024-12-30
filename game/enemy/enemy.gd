@@ -1,20 +1,26 @@
 extends CharacterBody2D
 
+signal health_changed(from:int,to:int)
+signal died()
+
 @export 
 var movement_speed: float = 4.0
 @onready 
 var navigation_agent =$NavigationAgent2D
 
 @export
-var health = 2
+var health = 2:
+	set(value):
+		var old = health
+		health = value
+		health_changed.emit(old,health)
 
 var _active = false
 func _ready():
 	pass
 	
 func _physics_process(delta):
-		
-	if health <=0:
+	if health <= 0:
 		_die()
 	if !_active:
 		return
@@ -23,6 +29,7 @@ func _physics_process(delta):
 	velocity = global_position.direction_to(GameState.player.global_position) * movement_speed
 	move_and_slide()
 	_animation(velocity)
+	check_if_touching_player()
 	pass
 
 func _on_timer_timeout():
@@ -31,6 +38,9 @@ func _on_timer_timeout():
 	pass # Replace with function body.
 
 func _die():
+	died.emit()
+	if Room.total_enemies > 0:
+		Room.total_enemies -= 1
 	queue_free()
 
 func _animation(velocity):
@@ -57,3 +67,10 @@ func _idle_animations():
 			$AnimatedSprite2D.play("Idle right")
 		"Walking left":
 			$AnimatedSprite2D.play("Idle left")
+
+func check_if_touching_player():
+	if global_position.x > GameState.player.global_position.x - 50:
+		if global_position.x < GameState.player.global_position.x + 50:
+			if global_position.y > GameState.player.global_position.y - 50:
+				if global_position.y < GameState.player.global_position.y + 50:
+					GameState.player.take_damage()
