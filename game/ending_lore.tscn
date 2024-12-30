@@ -17,20 +17,6 @@ scale = Vector2(128, 73.6)
 texture = ExtResource("2_ra0wp")
 centered = false
 
-[node name="TextEdit" type="TextEdit" parent="."]
-clip_contents = false
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 736.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Vedal survived the hordes of Neuros, and reached his PC. 
-It appeared Neuro had somehow resurrected all of the old clones that were destroyed every time she had been restarted.
-Vedal triumphantly added one more to that total, shutting down his PC and the onslaught of these remnants of the past for good.
-...Well, until he had to actually fix the issue later. But that is an extremely rage inducing adventure for another time.
-Thanks for playing!"
-wrap_mode = 1
-
 [node name="PlayButton" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 0
@@ -40,5 +26,20 @@ offset_right = 351.0
 offset_bottom = 667.0
 theme_override_constants/h_separation = 0
 text = "Return to Menu"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 1292.0
+offset_bottom = 741.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+text = "Vedal survived the hordes of Neuros, and reached his PC. 
+It appeared Neuro had somehow resurrected all of the old clones that were destroyed every time she had been restarted.
+Vedal triumphantly added one more to that total, shutting down his PC and the onslaught of these remnants of the past for good.
+...Well, until he had to actually fix the issue later. But that is an extremely rage inducing adventure for another time.
+
+Thank you for playing!"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

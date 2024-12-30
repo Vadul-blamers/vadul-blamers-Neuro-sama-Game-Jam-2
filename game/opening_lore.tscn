@@ -17,27 +17,29 @@ scale = Vector2(128, 73.6)
 texture = ExtResource("2_t63fm")
 centered = false
 
-[node name="TextEdit" type="TextEdit" parent="."]
-clip_contents = false
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 736.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "It was a typical afternoon for Vedal.
-Wake up, turn on Neuro's stream, leave Neuro and go to Gregg's for a lovely chicken bake. 
-But right as Vedal was about to sit down at their exquisite tables and dig in, something unexpected happened. 
-Clones of Neuro started to manifest around Vedal and wreck havok on Gregg's! Dozens of them, each looking...slightly older than the last.
-Not-silently cursing whatever Neuro had done while he was away, Vedal prepared himself to get home to his mansion, stop whatever was going on, and most importantly, defend Gregg's."
-wrap_mode = 1
-
 [node name="PlayButton" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 80)
+layout_mode = 0
 offset_left = 34.0
 offset_top = 587.0
 offset_right = 351.0
 offset_bottom = 667.0
 theme_override_constants/h_separation = 0
 text = "Continue..."
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 5.0
+offset_right = 1287.0
+offset_bottom = 739.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 30
+text = "It was a typical afternoon for Vedal.
+Wake up, turn on Neuro's stream, leave Neuro and go to Gregg's for a lovely chicken bake. 
+But right as Vedal was about to sit down at their exquisite tables and dig in, something unexpected happened. 
+Clones of Neuro started to manifest around Vedal and wreck havok on Gregg's! Dozens of them, each looking...slightly older than the last.
+Not-silently cursing whatever Neuro had done while he was away, Vedal prepared himself to get home to his mansion, stop whatever was going on, and most importantly, defend Gregg's."
+tab_size = 0
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
