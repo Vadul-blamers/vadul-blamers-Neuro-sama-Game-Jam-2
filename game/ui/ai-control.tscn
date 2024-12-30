@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c22yxfeqye05h"]
+[gd_scene load_steps=12 format=3 uid="uid://c22yxfeqye05h"]
 
 [ext_resource type="Theme" uid="uid://cd2iy5r0u86vj" path="res://assets/ui/theme.tres" id="1_8wco2"]
 [ext_resource type="Script" path="res://game/ui/ai_control.gd" id="1_iu083"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://6qfvqv50fd3o" path="res://ability/eliv/eliv.tres" id="4_myyff"]
 [ext_resource type="PackedScene" uid="uid://civlssogrw6f4" path="res://game/ai/random/RandomAI.tscn" id="5_vnlnv"]
 [ext_resource type="Resource" uid="uid://6qfvqv50fd3o" path="res://ability/more-neuros/more_neuros.tres" id="5_xv4qd"]
+[ext_resource type="Resource" uid="uid://df5ho40xrpv8q" path="res://ability/mockery/mockery.tres" id="6_7nogw"]
 [ext_resource type="Resource" uid="uid://55fewfc5a61g" path="res://ability/halucination-stew/ghost_neuro.tres" id="6_t1hv5"]
 [ext_resource type="Script" path="res://neuro/neuro_integration.gd" id="7_howro"]
 
@@ -26,7 +27,7 @@ turn_about_to_end_timer = NodePath("TurnAboutToEndTimer")
 card_selection_finished_timer = NodePath("CardSelectionAnimationFinished")
 timer_color = Color(0, 0.866667, 0, 1)
 timer_warning_color = Color(0.956863, 0, 0, 1)
-available_abilities = Array[ExtResource("3_inn7q")]([ExtResource("4_myyff"), ExtResource("5_xv4qd"), ExtResource("6_t1hv5"), null])
+available_abilities = Array[ExtResource("3_inn7q")]([ExtResource("5_xv4qd"), ExtResource("5_xv4qd"), ExtResource("6_t1hv5"), ExtResource("6_7nogw"), ExtResource("4_myyff"), null])
 
 [node name="RandomAi" parent="." instance=ExtResource("5_vnlnv")]
 
