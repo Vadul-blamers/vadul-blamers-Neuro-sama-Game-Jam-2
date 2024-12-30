@@ -23,7 +23,7 @@ var icon:PackedScene
 var on_use:PackedScene
 
 @export
-var specialWeightFactor: float = 1.0
-
-@export
 var is_positive: bool = false
+
+func specialWeightFactor():
+	return 1;

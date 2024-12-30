@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://cq004p3d83sbw"]
+[gd_scene load_steps=4 format=3 uid="uid://f8vpns11s5y4"]
+
+[ext_resource type="Script" path="res://game/Events.gd" id="1_wjxjj"]
+[ext_resource type="Script" path="res://game/Event.gd" id="2_qajpt"]
+[ext_resource type="Script" path="res://game/ai/smart_ai.gd" id="3_t7vqk"]
 
 [node name="Scene" type="Node2D"]
+
+[node name="Events" type="Node" parent="."]
+script = ExtResource("1_wjxjj")
+
+[node name="EventList" type="Node" parent="Events"]
+
+[node name="NoEvent" type="Node" parent="Events/EventList"]
+script = ExtResource("2_qajpt")
+
+[node name="AIs" type="Node" parent="."]
+
+[node name="DefaultAI" type="Node" parent="AIs"]
+script = ExtResource("3_t7vqk")
