@@ -29,6 +29,7 @@ func _physics_process(delta):
 	velocity = global_position.direction_to(GameState.player.global_position) * movement_speed
 	move_and_slide()
 	_animation(velocity)
+	check_if_touching_player()
 	pass
 
 func _on_timer_timeout():
@@ -66,3 +67,10 @@ func _idle_animations():
 			$AnimatedSprite2D.play("Idle right")
 		"Walking left":
 			$AnimatedSprite2D.play("Idle left")
+
+func check_if_touching_player():
+	if global_position.x > GameState.player.global_position.x - 50:
+		if global_position.x < GameState.player.global_position.x + 50:
+			if global_position.y > GameState.player.global_position.y - 50:
+				if global_position.y < GameState.player.global_position.y + 50:
+					GameState.player.take_damage()

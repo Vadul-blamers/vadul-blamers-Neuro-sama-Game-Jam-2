@@ -30,6 +30,8 @@ var facing = "down"
 var mouse_relative_position
 
 func _ready():
+	$ProgressBar.max_value = 30
+	update_health_bar()
 	GameState.player = self
 	items.all(func(item:AbilityContainer):
 		add_item(item)
@@ -44,23 +46,32 @@ func add_item(item:AbilityContainer):
 	if !items.has(item):
 		items.push_back(item)
 	pass
-
+var reset_timer = 0
 func _physics_process(_delta):
-	
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	velocity = direction * speed
-	mouse_location = get_global_mouse_position()
-	character_location = global_position
-	mouse_relative_position = mouse_location - character_location
-	if cam_lock:
-		_direction_facing(direction)
+	if health > 0:
+		var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		velocity = direction * speed
+		mouse_location = get_global_mouse_position()
+		character_location = global_position
+		mouse_relative_position = mouse_location - character_location
+		if cam_lock:
+			_direction_facing(direction)
+		else:
+			_direction_facing(mouse_relative_position)
+		if velocity == Vector2(0,0) :
+			_idle_animations()
+		else:
+			_walking_animations()
+		move_and_slide()
+		if cooldown < 0.6:
+			cooldown += _delta
 	else:
-		_direction_facing(mouse_relative_position)
-	if velocity == Vector2(0,0) :
-		_idle_animations()
-	else:
-		_walking_animations()
-	move_and_slide()
+		reset_timer += _delta
+		$AnimatedSprite2D.animation = "dead"
+	if reset_timer > 3:
+		queue_free()
+		get_tree().change_scene_to_file("res://menu/main_menu.tscn")
+
 
 func _direction_facing(orientation):
 	if abs(orientation.x) > abs(orientation.y):
@@ -97,3 +108,15 @@ func _idle_animations():
 			$AnimatedSprite2D.play("Idle right")
 		"Walking left":
 			$AnimatedSprite2D.play("Idle left")
+			
+
+var cooldown = 0
+func take_damage():
+	if cooldown > 0.5:
+		print("damage")
+		health = health-1
+		cooldown = 0
+		update_health_bar()
+
+func update_health_bar():
+	$ProgressBar.value = health

@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://b4jprwcfx7c8e"]
+[gd_scene load_steps=32 format=3 uid="uid://b4jprwcfx7c8e"]
 
 [ext_resource type="Script" path="res://game/player/Player.gd" id="1_34ufq"]
 [ext_resource type="Texture2D" uid="uid://dipd01j3g53or" path="res://assets/sprites/crosshair.png" id="3_47pir"]
 [ext_resource type="Texture2D" uid="uid://d2208uq58uasa" path="res://assets/sprites/vedal.png" id="3_51xku"]
+[ext_resource type="Texture2D" uid="uid://dnctutaxkkuht" path="res://assets/sprites/YOU DIED.png" id="3_lhn8r"]
 [ext_resource type="Script" path="res://game/player/marker_2d.gd" id="3_sgtsl"]
 [ext_resource type="Script" path="res://game/animated_4way_sprite.gd" id="4_2mvuk"]
 [ext_resource type="Theme" uid="uid://cd2iy5r0u86vj" path="res://assets/ui/theme.tres" id="6_67ajg"]
@@ -86,6 +87,10 @@ region = Rect2(32, 16, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_v1fvw"]
 atlas = ExtResource("3_51xku")
 region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87ciq"]
+atlas = ExtResource("3_lhn8r")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w64nv"]
 animations = [{
@@ -188,10 +193,24 @@ animations = [{
 "loop": true,
 "name": &"Walking up",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87ciq")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vrbij"]
 radius = 20.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_lhw5g"]
+color = Color(0.0112215, 0.350968, 1.44392e-07, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 9
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 3
@@ -204,6 +223,7 @@ position = Vector2(4.76837e-07, 4.76837e-07)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_w64nv")
 animation = &"Idle up"
+autoplay = "Idle up"
 script = ExtResource("4_2mvuk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -245,3 +265,12 @@ theme_override_constants/margin_bottom = 10
 [node name="itemContainer" type="GridContainer" parent="CanvasLayer/Panel/MarginContainer"]
 layout_mode = 2
 columns = 5
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -44.0
+offset_top = 20.0
+offset_right = 44.0
+offset_bottom = 29.0
+theme_override_font_sizes/font_size = 1
+theme_override_styles/fill = SubResource("StyleBoxLine_lhw5g")
+max_value = 30.0

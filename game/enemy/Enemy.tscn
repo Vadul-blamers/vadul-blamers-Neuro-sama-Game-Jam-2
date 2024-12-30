@@ -1,10 +1,27 @@
-[gd_scene load_steps=29 format=3 uid="uid://bes3h8osl2j2a"]
+[gd_scene load_steps=34 format=3 uid="uid://bes3h8osl2j2a"]
 
 [ext_resource type="Script" path="res://game/enemy/enemy.gd" id="1_yakek"]
 [ext_resource type="Texture2D" uid="uid://vdtc8fcgsrjx" path="res://assets/sprites/void-sama.png" id="2_1yydw"]
+[ext_resource type="Texture2D" uid="uid://ddfyk1ne8lowe" path="res://assets/sprites/neur.png" id="2_t7pxm"]
 [ext_resource type="Shader" path="res://assets/glitch.gdshader" id="3_10br2"]
 [ext_resource type="Script" path="res://game/animated_4way_sprite.gd" id="3_o0f1a"]
 [ext_resource type="Script" path="res://game/enemy/attack_area.gd" id="4_c3oeg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ry8eh"]
+atlas = ExtResource("2_t7pxm")
+region = Rect2(0, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sos84"]
+atlas = ExtResource("2_t7pxm")
+region = Rect2(0, 51, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei7qr"]
+atlas = ExtResource("2_t7pxm")
+region = Rect2(0, 34, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2luft"]
+atlas = ExtResource("2_t7pxm")
+region = Rect2(0, 17, 16, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ixfak"]
 atlas = ExtResource("2_1yydw")
@@ -72,6 +89,38 @@ region = Rect2(48, 17, 16, 17)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2uumc"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ry8eh")
+}],
+"loop": true,
+"name": &"Idle down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sos84")
+}],
+"loop": true,
+"name": &"Idle left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei7qr")
+}],
+"loop": true,
+"name": &"Idle right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2luft")
+}],
+"loop": true,
+"name": &"Idle up",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ixfak")
@@ -222,7 +271,7 @@ movement_speed = 50.0
 position = Vector2(4.76837e-07, 4.76837e-07)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2uumc")
-animation = &"Walking up"
+animation = &"Idle up"
 script = ExtResource("3_o0f1a")
 
 [node name="ColorRect" type="ColorRect" parent="."]
