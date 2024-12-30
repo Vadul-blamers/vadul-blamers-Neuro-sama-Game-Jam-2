@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AbilityContainer" load_steps=4 format=3 uid="uid://6qfvqv50fd3o"]
 
-[ext_resource type="PackedScene" uid="uid://buibq43pk31lt" path="res://ability/blank.tscn" id="1_6l1tq"]
+[ext_resource type="PackedScene" uid="uid://c6jclfx81tkse" path="res://ability/neuro/more-neuros/neurons.tscn" id="1_1rn7y"]
 [ext_resource type="Script" path="res://ability/Ability.gd" id="1_35th5"]
 [ext_resource type="PackedScene" uid="uid://bjwecf7ya1w67" path="res://ability/neuro/more-neuros/effect.tscn" id="2_d4w22"]
 
@@ -9,7 +9,6 @@ script = ExtResource("1_35th5")
 name = &"More Neuros"
 description = &"Spawns more neuros"
 tooltip = &"+5 Neuro"
-icon = ExtResource("1_6l1tq")
+icon = ExtResource("1_1rn7y")
 on_use = ExtResource("2_d4w22")
-specialWeightFactor = 1.1
 is_positive = false
