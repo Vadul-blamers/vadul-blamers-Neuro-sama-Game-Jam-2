@@ -1,6 +1,6 @@
 extends Node
 
-@export var positiveValue = 1.5;
+@export var positiveValue = 1.2;
 var events : AI_Control;
 
 signal made_selection(selected:int)
