@@ -11,5 +11,4 @@ description = &"Spawns more neuros"
 tooltip = &"+5 Neuro"
 icon = ExtResource("1_6l1tq")
 on_use = ExtResource("2_d4w22")
-specialWeightFactor = 1.1
 is_positive = false
