@@ -1,45 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbtp8qraa6obc"]
+[gd_scene load_steps=8 format=3 uid="uid://da7h2ggqkt2a2"]
 
-[ext_resource type="Texture2D" uid="uid://c7ci2757rkwtw" path="res://ability/frying_pan/frying-pan.png" id="1_xylnn"]
-
-[sub_resource type="GDScript" id="GDScript_bvuub"]
-script/source = "extends Area2D
-
-@export
-var speed = 5000
-@export
-var damage = 1
-	
-func _ready():
-	var enemies  = get_tree().get_nodes_in_group(\"enemy\")
-	var target = enemies[0]
-	var player = GameState.player.global_position
-	var target_distance = player.global_position.distance_to(target.global_position)
-	#find the closest enemy to target
-	for enemy in enemies:
-		if player.global_position.distance_to(enemy.global_position) < target_distance:
-			target_distance = player.global_position.distance_to(enemy.global_position)
-			target = enemy
-			pass
-	look_at(target.global_position)
-
-func _process(delta):
-	move_local_x(delta*speed)
-	
-func _on_timer_timeout():
-	queue_free()
-	pass # Replace with function body.
-
-func _on_body_entered(body):
-	body.health -= damage
-	pass # Replace with function body.
-"
+[ext_resource type="Script" path="res://ability/frying_pan/pan-projectile.tres.gd" id="1_58vbh"]
+[ext_resource type="Texture2D" uid="uid://c7ci2757rkwtw" path="res://ability/frying_pan/frying-pan.png" id="1_efe53"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_syxdb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_xylnn")
+"texture": ExtResource("1_efe53")
 }],
 "loop": true,
 "name": &"default",
@@ -47,6 +15,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x817y"]
+radius = 20.0
 
 [sub_resource type="Animation" id="Animation_4ddou"]
 length = 0.001
@@ -89,10 +58,10 @@ _data = {
 collision_layer = 4
 collision_mask = 4
 monitorable = false
-script = SubResource("GDScript_bvuub")
-speed = 200
+script = ExtResource("1_58vbh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_syxdb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

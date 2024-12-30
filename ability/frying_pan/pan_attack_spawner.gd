@@ -3,14 +3,17 @@ extends Node2D
 @onready
 var timer = $Timer
 
-var projectile = preload("res://ability/frying_pan/projectile.tscn")
+var projectile = preload("res://ability/frying_pan/pan-projectile.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	reparent(GameState.player)
+	if get_parent() != GameState.player:
+		reparent(GameState.player)
+	timer.start(4)
 	pass # Replace with function body.
 
 func _on_timer_timeout():
+	timer.start(4)
 	var instance = projectile.instantiate()
 	instance.tree_entered.connect(func():
 		instance.position = GameState.player.position
@@ -21,5 +24,5 @@ func _on_timer_timeout():
 	else:
 		GameState.entity_container.add_child(instance)
 		
-	timer.start(1)
+	
 	pass

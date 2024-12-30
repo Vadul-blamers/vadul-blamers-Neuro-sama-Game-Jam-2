@@ -23,7 +23,6 @@ func _input(event):
 			get_tree().root.add_child(instance)
 		else:
 			GameState.entity_container.add_child(instance)
-			
 		timer.start(1)
 		pass
 	pass

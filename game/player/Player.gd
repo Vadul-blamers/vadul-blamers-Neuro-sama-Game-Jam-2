@@ -1,11 +1,20 @@
 extends CharacterBody2D
 
+signal health_changed(from:int,to:int)
+
 @export
 var speed:float = 300.0
+
 @export
-var health = 30.0
+var health = 30.0:
+	set(value):
+		var old = health
+		health = value
+		health_changed.emit(old,health)
+
 @export
 var damage_modifier = 0
+
 @export
 var items:Array[AbilityContainer] = [
 	preload("res://ability/ram/ram.tres")

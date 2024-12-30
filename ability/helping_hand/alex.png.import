@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2gpl3xq3l5ty"
-path="res://.godot/imported/TEMP WALK SOUTH VEDAL.png-b26b41ecc3decf55bd74494d44518c30.ctex"
+uid="uid://bvc72iixmdufl"
+path="res://.godot/imported/alex.png-0a61afa62ce6afb32ca174933e227706.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/TEMP WALK SOUTH VEDAL.png"
-dest_files=["res://.godot/imported/TEMP WALK SOUTH VEDAL.png-b26b41ecc3decf55bd74494d44518c30.ctex"]
+source_file="res://ability/helping_hand/alex.png"
+dest_files=["res://.godot/imported/alex.png-0a61afa62ce6afb32ca174933e227706.ctex"]
 
 [params]
 

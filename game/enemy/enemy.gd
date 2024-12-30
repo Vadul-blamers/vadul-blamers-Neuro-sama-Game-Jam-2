@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-signal health_changed(to:int)
+signal health_changed(from:int,to:int)
+signal died()
 
 @export 
 var movement_speed: float = 4.0
@@ -10,16 +11,15 @@ var navigation_agent =$NavigationAgent2D
 @export
 var health = 2:
 	set(value):
+		var old = health
 		health = value
-		health_changed.emit(health)
-	
+		health_changed.emit(old,health)
 
 var _active = false
 func _ready():
 	pass
 	
 func _physics_process(delta):
-		
 	if health <=0:
 		_die()
 	if !_active:
@@ -37,6 +37,7 @@ func _on_timer_timeout():
 	pass # Replace with function body.
 
 func _die():
+	died.emit()
 	queue_free()
 
 func _animation(velocity):
