@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv5xggftpvaq5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kpul5"]
+
+[node name="Display" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(31, 32)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_kpul5")
+autoplay = "default"

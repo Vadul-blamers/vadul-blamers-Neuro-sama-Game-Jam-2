@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxlut1rijcrk"]
+
+[ext_resource type="Texture2D" uid="uid://c7ci2757rkwtw" path="res://ability/frying_pan/frying-pan.png" id="1_eqmce"]
+
+[node name="Visual" type="TextureRect"]
+custom_minimum_size = Vector2(64, 64)
+texture = ExtResource("1_eqmce")

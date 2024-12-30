@@ -10,6 +10,7 @@ var card_selection_finished_timer:Timer
 
 @export
 var turn_time = Config.turn_time
+
 @export
 var turn_warning_time = Config.turn_warning_time
 

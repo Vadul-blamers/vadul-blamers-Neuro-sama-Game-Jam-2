@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b54nqpy362y3"
-path="res://.godot/imported/void-sama.png-d5a5145f1150016dd6e24e6718ff6f04.ctex"
+uid="uid://c7ci2757rkwtw"
+path="res://.godot/imported/frying-pan.png-39268c321b4f73caa114a03973a50a49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/void-sama.png"
-dest_files=["res://.godot/imported/void-sama.png-d5a5145f1150016dd6e24e6718ff6f04.ctex"]
+source_file="res://ability/frying_pan/frying-pan.png"
+dest_files=["res://.godot/imported/frying-pan.png-39268c321b4f73caa114a03973a50a49.ctex"]
 
 [params]
 

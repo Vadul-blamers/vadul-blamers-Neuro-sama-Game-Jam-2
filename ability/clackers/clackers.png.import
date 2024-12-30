@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b54nqpy362y3"
-path="res://.godot/imported/void-sama.png-d5a5145f1150016dd6e24e6718ff6f04.ctex"
+uid="uid://b6yxx641xthdt"
+path="res://.godot/imported/clackers.png-676ed071456be3358e1904f7a58ac5b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/void-sama.png"
-dest_files=["res://.godot/imported/void-sama.png-d5a5145f1150016dd6e24e6718ff6f04.ctex"]
+source_file="res://ability/clackers/clackers.png"
+dest_files=["res://.godot/imported/clackers.png-676ed071456be3358e1904f7a58ac5b3.ctex"]
 
 [params]
 

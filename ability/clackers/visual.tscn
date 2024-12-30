@@ -1,4 +1,31 @@
-[gd_scene format=3 uid="uid://8io0q2fegtwx"]
+[gd_scene load_steps=3 format=3 uid="uid://8io0q2fegtwx"]
+
+[ext_resource type="Texture2D" uid="uid://b4gjnatl048db" path="res://ability/clackers/clacker_ball.tres" id="1_gs2fs"]
+[ext_resource type="Texture2D" uid="uid://cxgrseu8jm8af" path="res://ability/clackers/clacker_string.tres" id="2_fvhi4"]
 
 [node name="Visual" type="TextureRect"]
 custom_minimum_size = Vector2(64, 64)
+
+[node name="Node2D" type="Node2D" parent="."]
+rotation = 1.07508
+
+[node name="Clackers" type="Sprite2D" parent="Node2D"]
+position = Vector2(58.1796, -0.370704)
+texture = ExtResource("1_gs2fs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(25.0598, -0.0909219)
+scale = Vector2(2.88399, 1)
+texture = ExtResource("2_fvhi4")
+
+[node name="Node2D2" type="Node2D" parent="."]
+rotation = 0.63759
+
+[node name="Clackers" type="Sprite2D" parent="Node2D2"]
+position = Vector2(58.1796, -0.370704)
+texture = ExtResource("1_gs2fs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
+position = Vector2(25.0598, -0.0909219)
+scale = Vector2(2.88399, 1)
+texture = ExtResource("2_fvhi4")

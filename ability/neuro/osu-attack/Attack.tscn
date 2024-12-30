@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpgxvwv0agcs4"]
 
-[ext_resource type="Script" path="res://ability/osu-attack/attack.gd" id="1_l64eq"]
-[ext_resource type="Shader" path="res://ability/osu-attack/Attack.gdshader" id="1_nkyw2"]
+[ext_resource type="Script" path="res://ability/neuro/osu-attack/attack.gd" id="1_l64eq"]
+[ext_resource type="Shader" path="res://ability/neuro/osu-attack/Attack.gdshader" id="1_nkyw2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_twvfi"]
 shader = ExtResource("1_nkyw2")

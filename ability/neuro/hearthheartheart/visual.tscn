@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0600e84rjl2n"]
+
+[ext_resource type="Texture2D" uid="uid://dvnjsumkpsl32" path="res://assets/sprites/heart.png" id="1_yancp"]
+
+[node name="Visual" type="TextureRect"]
+modulate = Color(1, 0.482353, 1, 1)
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1216.0
+offset_bottom = -672.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yancp")
