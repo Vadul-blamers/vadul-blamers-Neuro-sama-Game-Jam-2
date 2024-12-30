@@ -69,8 +69,8 @@ func _idle_animations():
 			$AnimatedSprite2D.play("Idle left")
 
 func check_if_touching_player():
-	if global_position.x > GameState.player.global_position.x - 50:
-		if global_position.x < GameState.player.global_position.x + 50:
-			if global_position.y > GameState.player.global_position.y - 50:
-				if global_position.y < GameState.player.global_position.y + 50:
+	if global_position.x > GameState.player.global_position.x - 45:
+		if global_position.x < GameState.player.global_position.x + 45:
+			if global_position.y > GameState.player.global_position.y - 45:
+				if global_position.y < GameState.player.global_position.y + 45:
 					GameState.player.take_damage()

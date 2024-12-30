@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AbilityContainer" load_steps=4 format=3 uid="uid://b0qm3i48u4w4g"]
 
-[ext_resource type="PackedScene" uid="uid://5mkumcx35kbv" path="res://ability/ram/visual.tscn" id="1_25a2e"]
+[ext_resource type="PackedScene" path="res://ability/ram/visual.tscn" id="1_25a2e"]
 [ext_resource type="Script" path="res://ability/Ability.gd" id="1_l7ohm"]
 [ext_resource type="PackedScene" uid="uid://y612ot8ppuih" path="res://ability/ram/ram_attack.tscn" id="2_mgw5g"]
 
@@ -11,5 +11,4 @@ description = ""
 tooltip = &"fill me"
 icon = ExtResource("1_25a2e")
 on_use = ExtResource("2_mgw5g")
-specialWeightFactor = 1.0
 is_positive = true

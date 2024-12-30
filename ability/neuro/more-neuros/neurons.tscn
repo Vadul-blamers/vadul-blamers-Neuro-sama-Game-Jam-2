@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6jclfx81tkse"]
+
+[ext_resource type="Texture2D" uid="uid://dvnjsumkpsl32" path="res://assets/sprites/heart.png" id="1_wjkf8"]
+
+[node name="Icon" type="TextureRect"]
+custom_minimum_size = Vector2(128, 128)
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("1_wjkf8")
+expand_mode = 1
