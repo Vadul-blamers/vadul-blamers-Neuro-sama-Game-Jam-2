@@ -1,9 +1,52 @@
-[gd_scene format=3 uid="uid://bv5xggftpvaq5"]
+[gd_scene load_steps=7 format=3 uid="uid://bv5xggftpvaq5"]
+
+[ext_resource type="Texture2D" uid="uid://b54nqpy362y3" path="res://assets/sprites/void-sama.png" id="1_y3p6s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hta6m"]
+atlas = ExtResource("1_y3p6s")
+region = Rect2(0, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0odl7"]
+atlas = ExtResource("1_y3p6s")
+region = Rect2(16, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a158p"]
+atlas = ExtResource("1_y3p6s")
+region = Rect2(32, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o31o"]
+atlas = ExtResource("1_y3p6s")
+region = Rect2(48, 0, 16, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qi6wn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hta6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0odl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a158p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o31o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Display" type="Control"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 64.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(31, 32)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_qi6wn")
+autoplay = "default"
+frame_progress = 0.348252
