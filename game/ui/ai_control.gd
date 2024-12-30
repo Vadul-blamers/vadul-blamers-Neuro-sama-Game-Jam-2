@@ -44,6 +44,7 @@ signal option_selected(ability:AbilityContainer)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GameState.ai_control = self
 	turn_timer.timeout.connect(func():
 		turn_about_to_end_timer.start(turn_warning_time)
 		pass)
@@ -103,7 +104,6 @@ func _on_card_selection_animation_finished_timeout():
 		return true
 		pass)
 	pass # Replace with function body.
-
 
 var _positive_events = 0
 var _maximum_positive_events = 4

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityContainer" load_steps=2 format=3 uid="uid://de2rn8g0xoyu8"]
+
+[ext_resource type="Script" path="res://ability/Ability.gd" id="1_171rx"]
+
+[resource]
+script = ExtResource("1_171rx")
+name = &""
+description = &""
+tooltip = &"fill me"
+specialWeightFactor = 1.0
+is_positive = false

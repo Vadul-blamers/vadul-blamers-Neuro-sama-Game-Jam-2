@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjwecf7ya1w67"]
+
+[ext_resource type="PackedScene" uid="uid://bes3h8osl2j2a" path="res://game/enemy/Enemy.tscn" id="1_iwgud"]
+[ext_resource type="Script" path="res://ability/more-neuros/effect.gd" id="1_jdbei"]
+
+[node name="Effect" type="Node2D"]
+script = ExtResource("1_jdbei")
+
+[node name="Enemy" parent="." instance=ExtResource("1_iwgud")]
+position = Vector2(44, 0)
+
+[node name="Enemy2" parent="." instance=ExtResource("1_iwgud")]
+position = Vector2(-44, 0)
+
+[node name="Enemy3" parent="." instance=ExtResource("1_iwgud")]
+position = Vector2(0, 44)
+
+[node name="Enemy5" parent="." instance=ExtResource("1_iwgud")]
+
+[node name="Enemy4" parent="." instance=ExtResource("1_iwgud")]
+position = Vector2(0, -44)

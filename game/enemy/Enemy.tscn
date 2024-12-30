@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://bes3h8osl2j2a"]
+[gd_scene load_steps=27 format=3 uid="uid://bes3h8osl2j2a"]
 
 [ext_resource type="Script" path="res://game/enemy/enemy.gd" id="1_yakek"]
+[ext_resource type="Texture2D" uid="uid://ddfyk1ne8lowe" path="res://assets/sprites/neur.png" id="2_emrpy"]
 [ext_resource type="Texture2D" uid="uid://c2gpl3xq3l5ty" path="res://assets/sprites/TEMP WALK SOUTH VEDAL.png" id="2_s0hxn"]
 [ext_resource type="Shader" path="res://assets/glitch.gdshader" id="3_10br2"]
 [ext_resource type="Script" path="res://game/enemy/attack_area.gd" id="4_c3oeg"]
@@ -193,7 +194,13 @@ collision_mask = 7
 script = ExtResource("1_yakek")
 movement_speed = 50.0
 
+[node name="Neur" type="Sprite2D" parent="."]
+position = Vector2(-2.38419e-07, 2.38419e-07)
+scale = Vector2(2, 2)
+texture = ExtResource("2_emrpy")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(4.76837e-07, 4.76837e-07)
 scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_ga0c6")

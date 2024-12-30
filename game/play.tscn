@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://ability/Ability.gd" id="3_nrnb5"]
 [ext_resource type="PackedScene" uid="uid://b4jprwcfx7c8e" path="res://game/player/Player.tscn" id="4_h7te2"]
 [ext_resource type="Resource" uid="uid://celpodlo5ymgt" path="res://ability/BlankAbility.tres" id="4_hke6y"]
-[ext_resource type="Resource" uid="uid://6qfvqv50fd3o" path="res://ability/more-neuros/more_neuros.tres" id="5_wtaos"]
+[ext_resource type="Resource" uid="uid://6qfvqv50fd3o" path="res://ability/eliv/eliv.tres" id="5_wtaos"]
 [ext_resource type="PackedScene" uid="uid://48p045d6g5uj" path="res://game/greggs_map.tscn" id="7_7fjks"]
 [ext_resource type="PackedScene" uid="uid://bes3h8osl2j2a" path="res://game/enemy/Enemy.tscn" id="10_i44xu"]
 [ext_resource type="AudioStream" uid="uid://0yohdiyy3tkt" path="res://assets/music/greggs_smasher.mp3" id="11_50plb"]
@@ -38,10 +38,25 @@ position = Vector2(-9, -19)
 position = Vector2(381, 471)
 
 [node name="Enemy" parent="EntityContainer" instance=ExtResource("10_i44xu")]
-position = Vector2(236, 300)
+position = Vector2(275, 368)
+
+[node name="ColorRect" parent="EntityContainer/Enemy" index="2"]
+visible = false
+
+[node name="CollisionShape2D" parent="EntityContainer/Enemy" index="3"]
+visible = false
+
+[node name="Area2D" parent="EntityContainer/Enemy" index="6"]
+visible = false
 
 [node name="Enemy2" parent="EntityContainer" instance=ExtResource("10_i44xu")]
 position = Vector2(458, 298)
+
+[node name="CollisionShape2D" parent="EntityContainer/Enemy2" index="3"]
+visible = false
+
+[node name="CollisionShape2D" parent="EntityContainer/Enemy2/Area2D" index="0"]
+visible = false
 
 [node name="Enemy3" parent="EntityContainer" instance=ExtResource("10_i44xu")]
 position = Vector2(598, 352)
@@ -53,3 +68,6 @@ position = Vector2(744, 362)
 position = Vector2(876, 374)
 
 [connection signal="option_selected" from="CanvasLayer/AiControl" to="AbilityController" method="_on_ai_control_option_selected"]
+
+[editable path="EntityContainer/Enemy"]
+[editable path="EntityContainer/Enemy2"]

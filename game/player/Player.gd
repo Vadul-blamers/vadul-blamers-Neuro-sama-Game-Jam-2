@@ -37,6 +37,7 @@ func add_item(item:AbilityContainer):
 	pass
 
 func _physics_process(_delta):
+	
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = direction * speed
 	mouse_location = get_global_mouse_position()
