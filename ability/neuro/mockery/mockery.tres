@@ -1,14 +1,28 @@
-[gd_resource type="Resource" script_class="AbilityContainer" load_steps=3 format=3 uid="uid://df5ho40xrpv8q"]
+[gd_resource type="Resource" script_class="AbilityContainer" load_steps=5 format=3 uid="uid://df5ho40xrpv8q"]
 
-[ext_resource type="PackedScene" uid="uid://cymu2sh3bfn68" path="res://ability/neuro/mockery/mockery.tscn" id="1_tl5e7"]
+[ext_resource type="Script" path="res://ability/neuro/mockery/mockery.gd" id="1_whbrw"]
 [ext_resource type="Script" path="res://ability/Ability.gd" id="2_0s16a"]
+[ext_resource type="PackedScene" uid="uid://30htxlx6ivo8" path="res://ability/neuro/mockery/attack.tscn" id="2_wrisg"]
+
+[sub_resource type="PackedScene" id="PackedScene_mree3"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Node2D", "Node2D", "script"),
+"node_count": 1,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0),
+"variants": [ExtResource("1_whbrw")],
+"version": 3
+}
 
 [resource]
 script = ExtResource("2_0s16a")
 name = &"Mockery"
 description = "Neuro, you need to say something mean to the player"
 tooltip = &"5 damage to the player"
-icon = ExtResource("1_tl5e7")
-on_use = ExtResource("1_tl5e7")
+icon = SubResource("PackedScene_mree3")
+on_use = ExtResource("2_wrisg")
 specialWeightFactor = 1.0
 is_positive = false

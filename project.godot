@@ -46,6 +46,10 @@ enabled=PackedStringArray("res://addons/neuro-sdk/plugin.cfg")
 config/itch_username="Vadul Blamers "
 config/itch_project_name="neuro-jam-2024"
 
+[global_group]
+
+enemy=""
+
 [input]
 
 ui_left={

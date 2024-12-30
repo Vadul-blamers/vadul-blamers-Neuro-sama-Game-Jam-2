@@ -3,9 +3,11 @@ extends Control
 class_name AI_Control
 @export 
 var turn_timer:Timer
-@export 
+
+@export
 var turn_about_to_end_timer:Timer
-@export 
+
+@export
 var card_selection_finished_timer:Timer
 
 @export

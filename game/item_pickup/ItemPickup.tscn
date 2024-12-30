@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://bssytscupbctk"]
+
+[ext_resource type="Script" path="res://game/item_pickup/item_pickup.gd" id="1_2ptwa"]
+[ext_resource type="Resource" uid="uid://b0qm3i48u4w4g" path="res://ability/ram/ram.tres" id="2_vx40l"]
+
+[sub_resource type="Animation" id="Animation_ki8x4"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_k4y7h"]
+resource_name = "idle"
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Node2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wa0s4"]
+_data = {
+"RESET": SubResource("Animation_ki8x4"),
+"idle": SubResource("Animation_k4y7h")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7tqbf"]
+radius = 21.095
+
+[node name="ItemPickup" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_2ptwa")
+item = ExtResource("2_vx40l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wa0s4")
+}
+autoplay = "idle"
+
+[node name="Node2D" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(64, 64)
+offset_left = -32.0
+offset_top = -31.0
+offset_right = 32.0
+offset_bottom = 33.0
+use_top_left = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7tqbf")
+debug_color = Color(0.80454, 0.146094, 0.939449, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

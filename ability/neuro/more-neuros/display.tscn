@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bv5xggftpvaq5"]
 
-[ext_resource type="Texture2D" uid="uid://b54nqpy362y3" path="res://assets/sprites/void-sama.png" id="1_y3p6s"]
+[ext_resource type="Texture2D" uid="uid://vdtc8fcgsrjx" path="res://assets/sprites/void-sama.png" id="1_y3p6s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hta6m"]
 atlas = ExtResource("1_y3p6s")
@@ -49,4 +49,4 @@ position = Vector2(31, 32)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_qi6wn")
 autoplay = "default"
-frame_progress = 0.348252
+frame_progress = 0.748908

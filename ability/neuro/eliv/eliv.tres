@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://buibq43pk31lt" path="res://ability/blank.tscn" id="1_6l1tq"]
 [ext_resource type="Script" path="res://ability/Ability.gd" id="1_35th5"]
-[ext_resource type="PackedScene" uid="uid://bjwecf7ya1w67" path="res://ability/neuro/more-neuros/effect.tscn" id="2_d4w22"]
+[ext_resource type="PackedScene" uid="uid://bjwecf7ya1w67" path="res://ability/neuro/eliv/effect.tscn" id="2_ibpbn"]
 
 [resource]
 script = ExtResource("1_35th5")
@@ -10,6 +10,6 @@ name = &"Evil"
 description = &"Spawns Evil, she has harpoons"
 tooltip = &"+1 Evil"
 icon = ExtResource("1_6l1tq")
-on_use = ExtResource("2_d4w22")
+on_use = ExtResource("2_ibpbn")
 specialWeightFactor = 1.1
 is_positive = false

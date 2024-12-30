@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://wgfww6yh3l5j"]
+
+[ext_resource type="Script" path="res://ability/neuro/filtered/shield.gd" id="1_2fb6b"]
+
+[node name="Shield" type="Node2D"]
+script = ExtResource("1_2fb6b")
