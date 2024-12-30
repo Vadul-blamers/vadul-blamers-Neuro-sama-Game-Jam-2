@@ -22,6 +22,7 @@ func _physics_process(delta):
 		return
 	velocity = global_position.direction_to(GameState.player.global_position) * movement_speed
 	move_and_slide()
+	_animation(velocity)
 	pass
 
 func _on_timer_timeout():
@@ -31,3 +32,28 @@ func _on_timer_timeout():
 
 func _die():
 	queue_free()
+
+func _animation(velocity):
+	if abs(velocity.x) > abs(velocity.y):
+		if velocity.x > 0:
+			$AnimatedSprite2D.play("Walking right")
+		else:
+			$AnimatedSprite2D.play("Walking left")
+	elif abs(velocity.x) < abs(velocity.y):
+		if velocity.y > 0:
+			$AnimatedSprite2D.play("Walking down")
+		else:
+			$AnimatedSprite2D.play("Walking up")
+	else:
+		_idle_animations()
+
+func _idle_animations():
+	match $AnimatedSprite2D.animation:
+		"Walking down":
+			$AnimatedSprite2D.play("Idle down")
+		"Walking up":
+			$AnimatedSprite2D.play("Idle up")
+		"Walking right":
+			$AnimatedSprite2D.play("Idle right")
+		"Walking left":
+			$AnimatedSprite2D.play("Idle left")
