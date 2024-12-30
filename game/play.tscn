@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://ability/Ability.gd" id="3_nrnb5"]
 [ext_resource type="PackedScene" uid="uid://b4jprwcfx7c8e" path="res://game/player/Player.tscn" id="4_h7te2"]
 [ext_resource type="Resource" uid="uid://celpodlo5ymgt" path="res://ability/BlankAbility.tres" id="4_hke6y"]
-[ext_resource type="Resource" uid="uid://6qfvqv50fd3o" path="res://ability/eliv/eliv.tres" id="5_wtaos"]
+[ext_resource type="Resource" uid="uid://6qfvqv50fd3o" path="res://ability/neuro/more-neuros/more_neuros.tres" id="5_wtaos"]
 [ext_resource type="PackedScene" uid="uid://48p045d6g5uj" path="res://game/greggs_map.tscn" id="7_7fjks"]
 [ext_resource type="PackedScene" uid="uid://bes3h8osl2j2a" path="res://game/enemy/Enemy.tscn" id="10_i44xu"]
 [ext_resource type="AudioStream" uid="uid://0yohdiyy3tkt" path="res://assets/music/greggs_smasher.mp3" id="11_50plb"]

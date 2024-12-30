@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjwecf7ya1w67"]
 
 [ext_resource type="PackedScene" uid="uid://bes3h8osl2j2a" path="res://game/enemy/Enemy.tscn" id="1_iwgud"]
-[ext_resource type="Script" path="res://ability/more-neuros/effect.gd" id="1_jdbei"]
+[ext_resource type="Script" path="res://ability/neuro/more-neuros/effect.gd" id="1_jdbei"]
 
 [node name="Effect" type="Node2D"]
 script = ExtResource("1_jdbei")

@@ -6,8 +6,8 @@
 
 [resource]
 script = ExtResource("1_l7ohm")
-name = &"Clackers"
-description = "Do you even know how to use it?"
+name = &"Frying pan"
+description = "Cooking stream anyone?"
 tooltip = &"fill me"
 icon = ExtResource("1_25a2e")
 on_use = ExtResource("2_mgw5g")

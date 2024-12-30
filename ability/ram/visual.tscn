@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://5mkumcx35kbv"]
 
-[ext_resource type="Texture2D" uid="uid://bci12s3okanym" path="res://assets/sprites/TEMP RAM SPRITE.png" id="1_vtprh"]
+[ext_resource type="Texture2D" uid="uid://c7ci2757rkwtw" path="res://ability/frying_pan/frying-pan.png" id="1_fkt8w"]
 
 [node name="Visual" type="TextureRect"]
 custom_minimum_size = Vector2(64, 64)
-texture = ExtResource("1_vtprh")
+texture = ExtResource("1_fkt8w")

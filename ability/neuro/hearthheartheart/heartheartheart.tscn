@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cymu2sh3bfn68"]
 
-[ext_resource type="Script" path="res://ability/hearthheartheart/heartheartheart.gd" id="1_j3ast"]
+[ext_resource type="Script" path="res://ability/neuro/hearthheartheart/heartheartheart.gd" id="1_j3ast"]
 [ext_resource type="Texture2D" uid="uid://cvr3rd81wdk2o" path="res://assets/sprites/TEMP HEART ANIM.png" id="2_07m5a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_205ts"]
