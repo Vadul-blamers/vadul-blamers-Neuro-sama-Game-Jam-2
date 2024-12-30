@@ -1,42 +1,73 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyrq262chr3fb"]
+[gd_scene load_steps=10 format=3 uid="uid://cyrq262chr3fb"]
 
-[ext_resource type="Script" path="res://game/play.gd" id="1_t7qxl"]
-[ext_resource type="Texture2D" uid="uid://c35y0q16lpj8p" path="res://assets/art/bg.png" id="2_rfrko"]
+[ext_resource type="Script" path="res://game/AbilityController.gd" id="1_q4egs"]
+[ext_resource type="PackedScene" uid="uid://c22yxfeqye05h" path="res://game/ui/ai-control.tscn" id="3_5iygr"]
+[ext_resource type="Script" path="res://ability/Ability.gd" id="3_nrnb5"]
+[ext_resource type="PackedScene" uid="uid://b4jprwcfx7c8e" path="res://game/player/Player.tscn" id="4_h7te2"]
+[ext_resource type="Resource" uid="uid://celpodlo5ymgt" path="res://ability/BlankAbility.tres" id="4_hke6y"]
+[ext_resource type="Resource" uid="uid://6qfvqv50fd3o" path="res://ability/eliv/eliv.tres" id="5_wtaos"]
+[ext_resource type="PackedScene" uid="uid://48p045d6g5uj" path="res://game/greggs_map.tscn" id="7_7fjks"]
+[ext_resource type="PackedScene" uid="uid://bes3h8osl2j2a" path="res://game/enemy/Enemy.tscn" id="10_i44xu"]
+[ext_resource type="AudioStream" uid="uid://0yohdiyy3tkt" path="res://assets/music/greggs_smasher.mp3" id="11_50plb"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node"]
 
-[node name="Play" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_t7qxl")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+script = ExtResource("1_q4egs")
 
-[node name="BG" type="TextureRect" parent="Play"]
+[node name="AiControl" parent="CanvasLayer" instance=ExtResource("3_5iygr")]
+top_level = true
+available_abilities = Array[ExtResource("3_nrnb5")]([ExtResource("4_hke6y"), ExtResource("5_wtaos")])
+
+[node name="AbilityController" type="Node" parent="." node_paths=PackedStringArray("entity_container")]
+script = ExtResource("1_q4egs")
+entity_container = NodePath("../EntityContainer")
+
+[node name="GreggsSmasher" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_50plb")
+volume_db = -13.904
+autoplay = true
+
+[node name="GreggsMap" parent="." instance=ExtResource("7_7fjks")]
+position = Vector2(-9, -19)
+
+[node name="EntityContainer" type="Node2D" parent="."]
+
+[node name="CharacterBody2D" parent="EntityContainer" instance=ExtResource("4_h7te2")]
+position = Vector2(381, 471)
+
+[node name="Enemy" parent="EntityContainer" instance=ExtResource("10_i44xu")]
+position = Vector2(275, 368)
+
+[node name="ColorRect" parent="EntityContainer/Enemy" index="2"]
 visible = false
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 729.0
-texture = ExtResource("2_rfrko")
 
-[node name="Label" type="Label" parent="Play"]
+[node name="CollisionShape2D" parent="EntityContainer/Enemy" index="3"]
 visible = false
-layout_mode = 0
-offset_left = 499.0
-offset_top = 270.0
-offset_right = 539.0
-offset_bottom = 293.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Game goes here lol"
 
-[node name="BackButton" type="Button" parent="Play"]
-layout_mode = 0
-offset_left = 18.0
-offset_top = 15.0
-offset_right = 68.0
-offset_bottom = 46.0
-text = "BACK"
+[node name="Area2D" parent="EntityContainer/Enemy" index="6"]
+visible = false
 
-[connection signal="pressed" from="Play/BackButton" to="Play" method="_on_back_button_pressed"]
+[node name="Enemy2" parent="EntityContainer" instance=ExtResource("10_i44xu")]
+position = Vector2(458, 298)
+
+[node name="CollisionShape2D" parent="EntityContainer/Enemy2" index="3"]
+visible = false
+
+[node name="CollisionShape2D" parent="EntityContainer/Enemy2/Area2D" index="0"]
+visible = false
+
+[node name="Enemy3" parent="EntityContainer" instance=ExtResource("10_i44xu")]
+position = Vector2(598, 352)
+
+[node name="Enemy4" parent="EntityContainer" instance=ExtResource("10_i44xu")]
+position = Vector2(744, 362)
+
+[node name="Enemy5" parent="EntityContainer" instance=ExtResource("10_i44xu")]
+position = Vector2(876, 374)
+
+[connection signal="option_selected" from="CanvasLayer/AiControl" to="AbilityController" method="_on_ai_control_option_selected"]
+
+[editable path="EntityContainer/Enemy"]
+[editable path="EntityContainer/Enemy2"]

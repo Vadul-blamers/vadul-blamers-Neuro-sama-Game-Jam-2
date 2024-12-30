@@ -1,125 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://p4r4pxkhrktl"]
+[gd_scene load_steps=2 format=3 uid="uid://p4r4pxkhrktl"]
 
 [ext_resource type="Script" path="res://game/room.gd" id="1_42vdw"]
-[ext_resource type="Texture2D" uid="uid://d2ljkmst35jn0" path="res://assets/art/greggs_room_base.png" id="2_mwxon"]
-[ext_resource type="Texture2D" uid="uid://bissf56i064no" path="res://assets/art/greggs_room_horizontal_wall.png" id="3_dipcy"]
-[ext_resource type="Texture2D" uid="uid://bx0oeaepywd7r" path="res://assets/art/greggs_room_horizontal_barrier.png" id="4_65h56"]
-[ext_resource type="Texture2D" uid="uid://blh2evc6hpkpa" path="res://assets/art/greggs_room_vertical_wall.png" id="5_131df"]
-[ext_resource type="Texture2D" uid="uid://ud6cny32ugyv" path="res://assets/art/greggs_room_vertical_barrier.png" id="6_atv3p"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8t0kx"]
-resource_local_to_scene = true
-size = Vector2(400, 40)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqa1m"]
-size = Vector2(40, 200)
 
 [node name="Room" type="Node2D"]
 script = ExtResource("1_42vdw")
 
-[node name="BaseRoom" type="Sprite2D" parent="."]
-texture = ExtResource("2_mwxon")
-centered = false
-
-[node name="BaseWalls" type="Area2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BaseWalls"]
-polygon = PackedVector2Array(0, 0, 440, 0, 440, 40, 40, 40, 40, 260, 0, 260)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="BaseWalls"]
-position = Vector2(1280, 0)
-scale = Vector2(-1, 1)
-polygon = PackedVector2Array(0, 0, 440, 0, 440, 40, 40, 40, 40, 260, 0, 260)
-
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="BaseWalls"]
-position = Vector2(1280, 720)
-scale = Vector2(-1, -1)
-polygon = PackedVector2Array(0, 0, 440, 0, 440, 40, 40, 40, 40, 260, 0, 260)
-
-[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="BaseWalls"]
-position = Vector2(0, 720)
-scale = Vector2(1, -1)
-polygon = PackedVector2Array(0, 0, 440, 0, 440, 40, 40, 40, 40, 260, 0, 260)
-
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(640, 360)
+position = Vector2(640, 368)
 
-[node name="NorthWall" type="Node2D" parent="."]
-position = Vector2(440, 0)
+[node name="RoomInterior" type="Area2D" parent="."]
 
-[node name="Wall" type="Sprite2D" parent="NorthWall"]
-visible = false
-texture = ExtResource("3_dipcy")
-centered = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomInterior"]
 
-[node name="Barrier" type="Sprite2D" parent="NorthWall"]
-visible = false
-texture = ExtResource("4_65h56")
-centered = false
-
-[node name="BlockCollision" type="Area2D" parent="NorthWall"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NorthWall/BlockCollision"]
-position = Vector2(200, 20)
-shape = SubResource("RectangleShape2D_8t0kx")
-disabled = true
-
-[node name="SouthWall" type="Node2D" parent="."]
-position = Vector2(440, 680)
-
-[node name="Wall" type="Sprite2D" parent="SouthWall"]
-visible = false
-texture = ExtResource("3_dipcy")
-centered = false
-
-[node name="Barrier" type="Sprite2D" parent="SouthWall"]
-visible = false
-texture = ExtResource("4_65h56")
-centered = false
-
-[node name="BlockCollision" type="Area2D" parent="SouthWall"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SouthWall/BlockCollision"]
-position = Vector2(200, 20)
-shape = SubResource("RectangleShape2D_8t0kx")
-disabled = true
-
-[node name="EastWall" type="Node2D" parent="."]
-position = Vector2(1240, 260)
-
-[node name="Wall" type="Sprite2D" parent="EastWall"]
-visible = false
-texture = ExtResource("5_131df")
-centered = false
-
-[node name="Barrier" type="Sprite2D" parent="EastWall"]
-visible = false
-texture = ExtResource("6_atv3p")
-centered = false
-
-[node name="BlockCollision" type="Area2D" parent="EastWall"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EastWall/BlockCollision"]
-position = Vector2(20, 100)
-shape = SubResource("RectangleShape2D_tqa1m")
-disabled = true
-
-[node name="WestWall" type="Node2D" parent="."]
-position = Vector2(0, 260)
-
-[node name="Wall" type="Sprite2D" parent="WestWall"]
-visible = false
-texture = ExtResource("5_131df")
-centered = false
-
-[node name="Barrier" type="Sprite2D" parent="WestWall"]
-visible = false
-texture = ExtResource("6_atv3p")
-centered = false
-
-[node name="BlockCollision" type="Area2D" parent="WestWall"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WestWall/BlockCollision"]
-position = Vector2(20, 100)
-shape = SubResource("RectangleShape2D_tqa1m")
-disabled = true
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)

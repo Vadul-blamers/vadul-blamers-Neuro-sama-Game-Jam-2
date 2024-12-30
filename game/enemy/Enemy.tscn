@@ -1,0 +1,247 @@
+[gd_scene load_steps=27 format=3 uid="uid://bes3h8osl2j2a"]
+
+[ext_resource type="Script" path="res://game/enemy/enemy.gd" id="1_yakek"]
+[ext_resource type="Texture2D" uid="uid://ddfyk1ne8lowe" path="res://assets/sprites/neur.png" id="2_emrpy"]
+[ext_resource type="Texture2D" uid="uid://c2gpl3xq3l5ty" path="res://assets/sprites/TEMP WALK SOUTH VEDAL.png" id="2_s0hxn"]
+[ext_resource type="Shader" path="res://assets/glitch.gdshader" id="3_10br2"]
+[ext_resource type="Script" path="res://game/enemy/attack_area.gd" id="4_c3oeg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd37t"]
+atlas = ExtResource("2_s0hxn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dokn7"]
+atlas = ExtResource("2_s0hxn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rso5c"]
+atlas = ExtResource("2_s0hxn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrl6t"]
+atlas = ExtResource("2_s0hxn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_on3xm"]
+atlas = ExtResource("2_s0hxn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqhxi"]
+atlas = ExtResource("2_s0hxn")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbf3h"]
+atlas = ExtResource("2_s0hxn")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r42lc"]
+atlas = ExtResource("2_s0hxn")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dob2g"]
+atlas = ExtResource("2_s0hxn")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74nql"]
+atlas = ExtResource("2_s0hxn")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_va0i6"]
+atlas = ExtResource("2_s0hxn")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kcy3"]
+atlas = ExtResource("2_s0hxn")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfts7"]
+atlas = ExtResource("2_s0hxn")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vycyu"]
+atlas = ExtResource("2_s0hxn")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ga0c6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd37t")
+}],
+"loop": true,
+"name": &"Idle down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dokn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rso5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrl6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_on3xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqhxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbf3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r42lc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dob2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74nql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_va0i6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kcy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfts7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vycyu")
+}],
+"loop": true,
+"name": &"Walking down",
+"speed": 25.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_16jhc"]
+shader = ExtResource("3_10br2")
+shader_parameter/shake_power = 0.04
+shader_parameter/shake_rate = 0.528
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 50.0
+shader_parameter/shake_color_rate = 0.03
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w841y"]
+radius = 21.587
+
+[sub_resource type="Animation" id="Animation_wf2cq"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_8x3e6"]
+resource_name = "fade-in"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hxqaw"]
+_data = {
+"RESET": SubResource("Animation_wf2cq"),
+"fade-in": SubResource("Animation_8x3e6")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_txcjg"]
+radius = 25.0
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_yakek")
+movement_speed = 50.0
+
+[node name="Neur" type="Sprite2D" parent="."]
+position = Vector2(-2.38419e-07, 2.38419e-07)
+scale = Vector2(2, 2)
+texture = ExtResource("2_emrpy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(4.76837e-07, 4.76837e-07)
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_ga0c6")
+animation = &"Walking down"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_16jhc")
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w841y")
+disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_hxqaw")
+}
+autoplay = "fade-in"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_c3oeg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_txcjg")
+
+[node name="Timer" type="Timer" parent="Area2D"]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_timer_timeout"]

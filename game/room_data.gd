@@ -1,5 +1,5 @@
-extends Node
 class_name RoomData
+extends Node
 #this class contains all the logic for a room's functionality
 #compared to the Room class which is for the physical appearance of the room
 
@@ -23,6 +23,7 @@ func on_enter_room() -> void:
 	
 #contains logic for when a room is "cleared"
 #should be overriden, and called when cleared is set to true, if anything specific must happen when a room is cleared
+#note that currently there is no logic to actually set a room as cleared, except for the spawn room, which automatically clears and does nothing. so.
 func on_room_cleared() -> void:
 	pass
 	

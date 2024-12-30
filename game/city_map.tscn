@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=4 uid="uid://tvrx7gwbhiql"]
+
+[ext_resource type="Script" path="res://game/map.gd" id="1_tx77q"]
+[ext_resource type="PackedScene" path="res://game/city_room.tscn" id="2_la8ri"]
+[ext_resource type="TileSet" uid="uid://d0tryqx4fvky4" path="res://game/map/tileset.tres" id="4_k28nq"]
+[ext_resource type="PackedScene" uid="uid://b4jprwcfx7c8e" path="res://game/player/Player.tscn" id="5_5yexu"]
+
+[node name="CityMap" type="Node2D"]
+script = ExtResource("1_tx77q")
+
+[node name="CityRoom" parent="." instance=ExtResource("2_la8ri")]
+
+[node name="CityRoom2" parent="." instance=ExtResource("2_la8ri")]
+position = Vector2(-1280, 0)
+room_type = 1
+
+[node name="CityRoom3" parent="." instance=ExtResource("2_la8ri")]
+position = Vector2(1280, 0)
+room_type = 1
+
+[node name="CityRoom4" parent="." instance=ExtResource("2_la8ri")]
+position = Vector2(1280, 736)
+room_type = 1
+
+[node name="CityRoom5" parent="." instance=ExtResource("2_la8ri")]
+position = Vector2(1280, -736)
+room_type = 1
+
+[node name="CityRoom6" parent="." instance=ExtResource("2_la8ri")]
+position = Vector2(0, -736)
+room_type = 1
+
+[node name="CityRoom7" parent="." instance=ExtResource("2_la8ri")]
+position = Vector2(2560, -736)
+room_type = 1
+
+[node name="CityRoom8" parent="." instance=ExtResource("2_la8ri")]
+position = Vector2(1280, -1472)
+room_type = 1
+
+[node name="CityRoom9" parent="." instance=ExtResource("2_la8ri")]
+position = Vector2(2560, -1472)
+room_type = 1
+
+[node name="CityRoom10" parent="." instance=ExtResource("2_la8ri")]
+position = Vector2(3840, -1472)
+room_type = 1
+
+[node name="CityRoom11" parent="." instance=ExtResource("2_la8ri")]
+position = Vector2(1280, -2208)
+room_type = 1
+
+[node name="CityRoom12" parent="." instance=ExtResource("2_la8ri")]
+position = Vector2(1280, -2944)
+room_type = 1
+
+[node name="CityRoom13" parent="." instance=ExtResource("2_la8ri")]
+position = Vector2(0, -1472)
+room_type = 1
+
+[node name="CityRoom14" parent="." instance=ExtResource("2_la8ri")]
+position = Vector2(1, -2208)
+room_type = 2
+
+[node name="Tiles" type="TileMapLayer" parent="."]
+position = Vector2(0, -1440)
+tile_set = ExtResource("4_k28nq")
+
+[node name="Player" parent="." instance=ExtResource("5_5yexu")]
+position = Vector2(644, 328)

@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://8io0q2fegtwx"]
+
+[node name="Visual" type="TextureRect"]
+custom_minimum_size = Vector2(64, 64)

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cymu2sh3bfn68"]
+
+[ext_resource type="Script" path="res://ability/hearthheartheart/heartheartheart.gd" id="1_j3ast"]
+[ext_resource type="Texture2D" uid="uid://cvr3rd81wdk2o" path="res://assets/sprites/TEMP HEART ANIM.png" id="2_07m5a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_205ts"]
+atlas = ExtResource("2_07m5a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84i3h"]
+atlas = ExtResource("2_07m5a")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_voyrn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_205ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84i3h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_j3ast")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_voyrn")
+autoplay = "default"
