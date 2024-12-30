@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=4 uid="uid://cyrq262chr3fb"]
+[gd_scene load_steps=34 format=4 uid="uid://cyrq262chr3fb"]
 
+[ext_resource type="Script" path="res://game/map_music.gd" id="1_beb4h"]
 [ext_resource type="Script" path="res://game/AbilityController.gd" id="1_q4egs"]
 [ext_resource type="PackedScene" uid="uid://c22yxfeqye05h" path="res://game/ui/ai-control.tscn" id="3_5iygr"]
 [ext_resource type="Script" path="res://ability/Ability.gd" id="3_nrnb5"]
@@ -13,13 +14,124 @@
 [ext_resource type="PackedScene" uid="uid://bssytscupbctk" path="res://game/item_pickup/ItemPickup.tscn" id="10_4el8b"]
 [ext_resource type="PackedScene" uid="uid://bcrf8md4dkdln" path="res://game/mansion_room.tscn" id="10_k074d"]
 [ext_resource type="AudioStream" uid="uid://0yohdiyy3tkt" path="res://assets/music/greggs_smasher.mp3" id="11_50plb"]
-[ext_resource type="Resource" uid="uid://b0qm3i48u4w4g" path="res://ability/frying_pan/frying_pan.tres" id="14_n1vye"]
-[ext_resource type="Resource" uid="uid://d0o7gteywjncw" path="res://ability/raise-the-timer/raise_the_timer.tres" id="15_8ti60"]
-[ext_resource type="Resource" uid="uid://b0qm3i48u4w4g" path="res://ability/clackers/clackers.tres" id="16_6c3bg"]
-[ext_resource type="Resource" uid="uid://d0o7gteywjncw" path="res://ability/helping_hand/helping_hand.tres" id="17_xsfck"]
-[ext_resource type="Resource" uid="uid://d0o7gteywjncw" path="res://ability/fruit-snacks/FruitSnacks.tres" id="18_jrhv0"]
+[ext_resource type="PackedScene" path="res://ability/fruit-snacks/visual.tscn" id="14_7awlo"]
+[ext_resource type="PackedScene" uid="uid://b6e8mmy867p4w" path="res://ability/raise-the-timer/RaiseTheTimer.tscn" id="15_5b1ju"]
+[ext_resource type="Script" path="res://game/item_pickup/item_pickup.gd" id="15_te0kl"]
+[ext_resource type="PackedScene" uid="uid://bxlut1rijcrk" path="res://ability/frying_pan/visual.tscn" id="16_gq55m"]
+[ext_resource type="PackedScene" uid="uid://bekmje02lc5qj" path="res://ability/frying_pan/attack.tscn" id="17_jv4hi"]
+[ext_resource type="PackedScene" uid="uid://5mkumcx35kbv" path="res://ability/ram/visual.tscn" id="19_5h6dw"]
+[ext_resource type="PackedScene" uid="uid://y612ot8ppuih" path="res://ability/ram/ram_attack.tscn" id="20_nk23i"]
+[ext_resource type="PackedScene" uid="uid://bp004yttfxrx8" path="res://ability/raise-the-timer/visual.tscn" id="21_svht2"]
+[ext_resource type="AudioStream" uid="uid://dy3lsjlt5lxer" path="res://assets/music/rum_road.mp3" id="22_82lr2"]
+[ext_resource type="AudioStream" uid="uid://dvc6y0jwywmgh" path="res://assets/music/coldfish_labyrinth.mp3" id="24_sjnbv"]
+
+[sub_resource type="Resource" id="Resource_45h6h"]
+script = ExtResource("3_nrnb5")
+name = &"Fruit snacks"
+description = ""
+tooltip = &"fill me"
+icon = ExtResource("14_7awlo")
+on_use = ExtResource("15_5b1ju")
+is_positive = false
+
+[sub_resource type="Resource" id="Resource_wtgiu"]
+script = ExtResource("3_nrnb5")
+name = &"Frying pan"
+description = "Cooking stream anyone?"
+tooltip = &"fill me"
+icon = ExtResource("16_gq55m")
+on_use = ExtResource("17_jv4hi")
+is_positive = true
+
+[sub_resource type="Animation" id="Animation_ki8x4"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_k4y7h"]
+resource_name = "idle"
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Node2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wa0s4"]
+_data = {
+"RESET": SubResource("Animation_ki8x4"),
+"idle": SubResource("Animation_k4y7h")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7tqbf"]
+radius = 21.095
+
+[sub_resource type="Resource" id="Resource_e1f6a"]
+script = ExtResource("3_nrnb5")
+name = &"Fruit snacks"
+description = ""
+tooltip = &"fill me"
+icon = ExtResource("14_7awlo")
+on_use = ExtResource("15_5b1ju")
+is_positive = false
+
+[sub_resource type="Resource" id="Resource_wcmwf"]
+script = ExtResource("3_nrnb5")
+name = &"Clackers"
+description = "Do you even know how to use it?"
+tooltip = &"fill me"
+icon = ExtResource("19_5h6dw")
+on_use = ExtResource("20_nk23i")
+is_positive = true
+
+[sub_resource type="Resource" id="Resource_c2qm6"]
+script = ExtResource("3_nrnb5")
+name = &"Helping Hand"
+description = &"The voices reduce the player\'s cooldown time"
+tooltip = &""
+icon = ExtResource("21_svht2")
+on_use = ExtResource("15_5b1ju")
+is_positive = false
 
 [node name="Node2D" type="Node"]
+script = ExtResource("1_beb4h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 10
@@ -277,22 +389,51 @@ position = Vector2(648, 471)
 
 [node name="ItemPickup5" parent="EntityContainer" instance=ExtResource("10_4el8b")]
 position = Vector2(638, -9842)
-item = ExtResource("18_jrhv0")
+item = SubResource("Resource_45h6h")
 
-[node name="ItemPickup6" parent="EntityContainer" instance=ExtResource("10_4el8b")]
+[node name="ItemPickup6" type="Area2D" parent="EntityContainer"]
 position = Vector2(371, 317)
-item = ExtResource("14_n1vye")
+collision_layer = 2
+collision_mask = 2
+monitorable = false
+script = ExtResource("15_te0kl")
+item = SubResource("Resource_wtgiu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EntityContainer/ItemPickup6"]
+libraries = {
+"": SubResource("AnimationLibrary_wa0s4")
+}
+autoplay = "idle"
+
+[node name="Node2D" type="CenterContainer" parent="EntityContainer/ItemPickup6"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+use_top_left = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityContainer/ItemPickup6"]
+shape = SubResource("CircleShape2D_7tqbf")
+debug_color = Color(0.80454, 0.146094, 0.939449, 0.42)
 
 [node name="ItemPickup" parent="EntityContainer" instance=ExtResource("10_4el8b")]
 position = Vector2(598, -2712)
-item = ExtResource("15_8ti60")
+item = SubResource("Resource_e1f6a")
 
 [node name="ItemPickup2" parent="EntityContainer" instance=ExtResource("10_4el8b")]
 position = Vector2(239, -3255)
-item = ExtResource("16_6c3bg")
+item = SubResource("Resource_wcmwf")
 
 [node name="ItemPickup3" parent="EntityContainer" instance=ExtResource("10_4el8b")]
 position = Vector2(1911, -5654)
-item = ExtResource("17_xsfck")
+item = SubResource("Resource_c2qm6")
+
+[node name="RumRoad" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_82lr2")
+volume_db = -13.904
+
+[node name="ColdfishLabyrinth" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_sjnbv")
+volume_db = -13.904
 
 [connection signal="option_selected" from="CanvasLayer/AiControl" to="AbilityController" method="_on_ai_control_option_selected"]
+[connection signal="body_entered" from="EntityContainer/ItemPickup6" to="EntityContainer/ItemPickup6" method="_on_body_entered"]

@@ -42,7 +42,10 @@ func _entered_room() -> void:
 	room_switched.emit(self)
 	_spawn_enemies()
 	room_data.on_enter_room() #activate room switching logic
-
+	if room_data is EmptyRoomData:
+		var i = EmptyRoomData.get_music_heard()
+		get_parent().change_music(i)
+		
 func _spawn_enemies() -> void:
 	if room_data is SpawnRoomData or room_data is EmptyRoomData:
 		return
@@ -51,7 +54,7 @@ func _spawn_enemies() -> void:
 	var inc = 0
 	if room_data is EndRoomData:
 		inc += 3
-	for i in range(1 + inc):
+	for i in range(2 + inc):
 		var x = randi_range(self.global_position.x + 128, self.global_position.x + 1280 - 128)
 		var y = randi_range(self.global_position.y + 300, self.global_position.y + 736 - 128)
 		var position = Vector2(x, y)
@@ -73,7 +76,7 @@ func _on_room_interior_body_entered(body: Node2D) -> void:
 signal room_switched(room: Room)
 
 static func room_is_locked() -> bool:
-	return total_enemies > 5
+	return total_enemies > 3
 
 func lock_room() -> void:
 	$RoomExits.enabled = true
