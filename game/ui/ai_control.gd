@@ -51,6 +51,7 @@ var startHistory : float = 3;
 @export var damageHistory : Array[float] = [];
 var avgHistory = 5.0;
 var avgDecay = 1.2;
+var damageTaken = 0.0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -101,12 +102,11 @@ func _on_turn_about_to_end_timer_timeout():
 	card_selection_finished_timer.start(2)
 	_timer_bar.tint_progress = timer_color
 	
-	var DAMAGELASTTURNTODOFIGUREOUT = 1;
 	if active_ability != null:
 		var id = available_abilities.find(active_ability);
-		damageHistory[id] += DAMAGELASTTURNTODOFIGUREOUT / avgHistory * 5;
+		damageHistory[id] += damageTaken / avgHistory * 5;
 		damageHistory[id] /= historyDecay;
-	avgHistory += DAMAGELASTTURNTODOFIGUREOUT;
+	avgHistory += damageTaken;
 	avgHistory /= avgDecay;
 	
 	if selected_ability != null:
@@ -199,3 +199,7 @@ func ability_selected_by_data(ability:AbilityContainer):
 	var index = ability_cards.find(card)
 	ability_selected(index)
 	pass
+
+func _player_health_changed(from, to):
+	if from > to:
+		damageTaken+= from - to;
