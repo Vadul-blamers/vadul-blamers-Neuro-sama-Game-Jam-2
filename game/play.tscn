@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cyrq262chr3fb"]
+[gd_scene load_steps=19 format=4 uid="uid://cyrq262chr3fb"]
 
 [ext_resource type="Script" path="res://game/AbilityController.gd" id="1_q4egs"]
 [ext_resource type="PackedScene" uid="uid://c22yxfeqye05h" path="res://game/ui/ai-control.tscn" id="3_5iygr"]
@@ -13,6 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://bssytscupbctk" path="res://game/item_pickup/ItemPickup.tscn" id="10_4el8b"]
 [ext_resource type="PackedScene" uid="uid://bcrf8md4dkdln" path="res://game/mansion_room.tscn" id="10_k074d"]
 [ext_resource type="AudioStream" uid="uid://0yohdiyy3tkt" path="res://assets/music/greggs_smasher.mp3" id="11_50plb"]
+[ext_resource type="Resource" uid="uid://b0qm3i48u4w4g" path="res://ability/frying_pan/frying_pan.tres" id="14_n1vye"]
+[ext_resource type="Resource" uid="uid://d0o7gteywjncw" path="res://ability/raise-the-timer/raise_the_timer.tres" id="15_8ti60"]
+[ext_resource type="Resource" uid="uid://b0qm3i48u4w4g" path="res://ability/clackers/clackers.tres" id="16_6c3bg"]
+[ext_resource type="Resource" uid="uid://d0o7gteywjncw" path="res://ability/helping_hand/helping_hand.tres" id="17_xsfck"]
+[ext_resource type="Resource" uid="uid://d0o7gteywjncw" path="res://ability/fruit-snacks/FruitSnacks.tres" id="18_jrhv0"]
 
 [node name="Node2D" type="Node"]
 
@@ -268,9 +273,26 @@ room_type = 2
 script = ExtResource("8_mca03")
 
 [node name="CharacterBody2D" parent="EntityContainer" instance=ExtResource("4_h7te2")]
-position = Vector2(381, 471)
+position = Vector2(648, 471)
+
+[node name="ItemPickup5" parent="EntityContainer" instance=ExtResource("10_4el8b")]
+position = Vector2(638, -9842)
+item = ExtResource("18_jrhv0")
+
+[node name="ItemPickup6" parent="EntityContainer" instance=ExtResource("10_4el8b")]
+position = Vector2(371, 317)
+item = ExtResource("14_n1vye")
 
 [node name="ItemPickup" parent="EntityContainer" instance=ExtResource("10_4el8b")]
-position = Vector2(355, 309)
+position = Vector2(598, -2712)
+item = ExtResource("15_8ti60")
+
+[node name="ItemPickup2" parent="EntityContainer" instance=ExtResource("10_4el8b")]
+position = Vector2(239, -3255)
+item = ExtResource("16_6c3bg")
+
+[node name="ItemPickup3" parent="EntityContainer" instance=ExtResource("10_4el8b")]
+position = Vector2(1911, -5654)
+item = ExtResource("17_xsfck")
 
 [connection signal="option_selected" from="CanvasLayer/AiControl" to="AbilityController" method="_on_ai_control_option_selected"]

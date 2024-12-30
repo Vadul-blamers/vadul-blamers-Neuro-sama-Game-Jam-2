@@ -51,7 +51,7 @@ func _spawn_enemies() -> void:
 	var inc = 0
 	if room_data is EndRoomData:
 		inc += 3
-	for i in range(3 + inc):
+	for i in range(1 + inc):
 		var x = randi_range(self.global_position.x + 128, self.global_position.x + 1280 - 128)
 		var y = randi_range(self.global_position.y + 300, self.global_position.y + 736 - 128)
 		var position = Vector2(x, y)
@@ -86,3 +86,5 @@ func _on_can_leave_room_timeout() -> void:
 		$CanLeaveRoom.stop()
 		Room.total_enemies = 0
 		room_data.room_cleared = true
+		if room_data is EndRoomData:
+			get_tree().change_scene_to_file("res://game/ending_lore.tscn")

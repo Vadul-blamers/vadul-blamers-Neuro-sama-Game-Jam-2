@@ -9,6 +9,7 @@ size = Vector2(1184, 640)
 [node name="MansionRoom" instance=ExtResource("1_5wnv1")]
 
 [node name="CollisionShape2D" parent="RoomInterior" index="0"]
+visible = false
 position = Vector2(640, 368)
 shape = SubResource("RectangleShape2D_y7r7b")
 
