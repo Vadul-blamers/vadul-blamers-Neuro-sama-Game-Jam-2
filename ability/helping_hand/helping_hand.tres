@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AbilityContainer" load_steps=4 format=3 uid="uid://d0o7gteywjncw"]
+
+[ext_resource type="Script" path="res://ability/Ability.gd" id="1_4l0dn"]
+[ext_resource type="PackedScene" path="res://ability/helping_hand/visual.tscn" id="1_dn7ip"]
+[ext_resource type="PackedScene" uid="uid://b6e8mmy867p4w" path="res://ability/helping_hand/HelpingHand.tscn" id="2_nyjf7"]
+
+[resource]
+script = ExtResource("1_4l0dn")
+name = &"Helping Hand"
+description = &"The voices reduce the player\'s cooldown time"
+tooltip = &""
+icon = ExtResource("1_dn7ip")
+on_use = ExtResource("2_nyjf7")
+specialWeightFactor = 1.0
+is_positive = false

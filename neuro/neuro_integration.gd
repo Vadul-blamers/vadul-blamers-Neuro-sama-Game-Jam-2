@@ -52,7 +52,7 @@ func _get_combined_tooltips() -> String:
 	var combined_tooltip: String = ""
 	for ability in _selected_spells:
 		combined_tooltip += str(ability.name) + ": "
-		combined_tooltip += str(ability.tooltip) + ". "
+		combined_tooltip += str(ability.description) + ". "
 	return combined_tooltip.strip_edges()
 
 func cast_spell(spell: String) -> void:

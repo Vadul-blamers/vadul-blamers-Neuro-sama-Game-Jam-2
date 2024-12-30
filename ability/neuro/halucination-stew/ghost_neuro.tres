@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AbilityContainer" load_steps=4 format=3 uid="uid://55fewfc5a61g"]
+
+[ext_resource type="PackedScene" uid="uid://buibq43pk31lt" path="res://ability/blank.tscn" id="1_qqw1l"]
+[ext_resource type="PackedScene" uid="uid://bjwecf7ya1w67" path="res://ability/neuro/more-neuros/effect.tscn" id="2_dw6p8"]
+[ext_resource type="Script" path="res://ability/Ability.gd" id="3_surme"]
+
+[resource]
+script = ExtResource("3_surme")
+name = &"halucination stew"
+description = "Ghost Neuro is not real, it can't hurt you. 
+Place 5 ghost Neuros on the map."
+tooltip = &"+5 Ghost Neuro"
+icon = ExtResource("1_qqw1l")
+on_use = ExtResource("2_dw6p8")
+specialWeightFactor = 1.1
+is_positive = false

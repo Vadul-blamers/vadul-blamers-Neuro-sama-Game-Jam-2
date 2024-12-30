@@ -6,8 +6,8 @@ extends Resource
 var name:StringName
 
 #description that that should also be passed to Neuro
-@export
-var description:StringName =""
+@export_multiline
+var description:String =""
 
 #Text used when the action shows on the UI
 @export

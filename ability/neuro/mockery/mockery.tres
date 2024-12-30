@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="AbilityContainer" load_steps=3 format=3 uid="uid://df5ho40xrpv8q"]
 
-[ext_resource type="PackedScene" uid="uid://cymu2sh3bfn68" path="res://ability/mockery/mockery.tscn" id="1_lsuq7"]
+[ext_resource type="PackedScene" uid="uid://cymu2sh3bfn68" path="res://ability/neuro/mockery/mockery.tscn" id="1_lsuq7"]
 [ext_resource type="Script" path="res://ability/Ability.gd" id="1_t5878"]
 
 [resource]
 script = ExtResource("1_t5878")
-name = &"Mockery"
-description = &"Damage the player"
-tooltip = &"10 damage"
+name = &"RAISE THE TIMER"
+description = &"Increases the turn timer by 5 seconds (Neuro\'s turns get longer, gets to take fewer actions)"
+tooltip = &"+5 seconds to the turn timer"
 icon = ExtResource("1_lsuq7")
 on_use = ExtResource("1_lsuq7")
 specialWeightFactor = 1.0
