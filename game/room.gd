@@ -2,6 +2,9 @@ extends Node2D
 class_name Room
 #this class contains the physical appearance and triggers for a room
 #compared to RoomData which contains the functionality of a room
+#LULE nvm this class does both
+
+static var total_enemies = 0
 
 #the types of rooms that a room can be set to
 enum RoomTypes{
@@ -31,12 +34,34 @@ func _ready() -> void:
 		RoomTypes.EMPTY:
 			room_data = EmptyRoomData.new()
 	
+var enemy_effect = preload("res://ability/neuro/more-neuros/effect.tscn")
 #trigger logic for when the room is entered
 func _entered_room() -> void:
 	$Camera2D.make_current() #move camera to new room
 	GameState.set_current_room(self)
 	room_switched.emit(self)
+	_spawn_enemies()
 	room_data.on_enter_room() #activate room switching logic
+
+func _spawn_enemies() -> void:
+	if room_data is SpawnRoomData or room_data is EmptyRoomData:
+		return
+	if room_data.room_cleared:
+		return
+	var inc = 0
+	if room_data is EndRoomData:
+		inc += 3
+	for i in range(3 + inc):
+		var x = randi_range(self.global_position.x + 128, self.global_position.x + 1280 - 128)
+		var y = randi_range(self.global_position.y + 300, self.global_position.y + 736 - 128)
+		var position = Vector2(x, y)
+		var effect = enemy_effect.instantiate()
+		effect.tree_entered.connect(func():
+			effect.position = position
+			pass)
+		get_parent().add_child(effect)
+		Room.total_enemies += 5
+	lock_room()
 
 #if the room was entered and the room is not the room the player is currently in, trigger the room entry effects
 #might want to separate this for the camera vs room entry effects 
@@ -46,3 +71,18 @@ func _on_room_interior_body_entered(body: Node2D) -> void:
 		
 #signal for when the room is swapped
 signal room_switched(room: Room)
+
+static func room_is_locked() -> bool:
+	return total_enemies > 5
+
+func lock_room() -> void:
+	$RoomExits.enabled = true
+	$CanLeaveRoom.start()
+	pass
+
+func _on_can_leave_room_timeout() -> void:
+	if not Room.room_is_locked():
+		$RoomExits.enabled = false
+		$CanLeaveRoom.stop()
+		Room.total_enemies = 0
+		room_data.room_cleared = true

@@ -24,5 +24,4 @@ description = "Neuro, you need to say something mean to the player"
 tooltip = &"5 damage to the player"
 icon = SubResource("PackedScene_mree3")
 on_use = ExtResource("2_wrisg")
-specialWeightFactor = 1.0
 is_positive = false

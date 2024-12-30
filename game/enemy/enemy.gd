@@ -20,7 +20,7 @@ func _ready():
 	pass
 	
 func _physics_process(delta):
-	if health <=0:
+	if health <= 0:
 		_die()
 	if !_active:
 		return
@@ -38,6 +38,8 @@ func _on_timer_timeout():
 
 func _die():
 	died.emit()
+	if Room.total_enemies > 0:
+		Room.total_enemies -= 1
 	queue_free()
 
 func _animation(velocity):
